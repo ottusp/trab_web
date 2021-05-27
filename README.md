@@ -33,14 +33,21 @@ A administração acessa sua tela de login por uma nova URL. Após logar, é mos
 
 <img src="img/prototype/adm-screens.jpg" width="300px">
 
+Além disso, pretendemos salvar no servidor:
+- Informações sobre o cliente, como nome, endereço e histórico de compras;
+- Informações sobre os produtos, como nome, estabelecimento que o produz e preço;
+
 ## Comentários sobre o código
 
 ## Plano de testes
+Pretendemos testar nosso front-end usando Junit. Ainda não decidimos sobre as ferramentas de teste para o back-end
 
 ## Resultados dos testes
 
 ## Como rodar o projeto
+Por enquanto, basta baixar esse repositória (ou cloná-lo na sua máquina) e abrir os arquivos HTML em um browser clicando duas vezes nos arquivos.
 
 ## Problemas
+Já tivemos problemas relacionados à responsividade do nosso protótipo e com o aprendizado rápido de frameworks de css. O segundo fator impacta no primeiro, fazendo com que a tela principal tenha divergências em relação ao protótipo no Figma. Para o próximo milestone, esperamos ter resolvido esse problema, dominando os frameworks de front-end e dedicando mais tempo à usabilidade das nossas páginas.
 
 ## Comentários
