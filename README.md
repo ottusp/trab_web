@@ -25,13 +25,13 @@ A navegação de páginas pode ser visualizada [nesse link](https://www.figma.co
 
 A tela inicial mostra uma série de refeições que o cliente pode comprar, e clicar em cada imagem leva o usuário à página do produto. Lá, é possível ver mais informações sobre aquele produto - ou lanche - como preço, local do restaurante/lanchonete, descrição e comentários de outros usuários. Na página inicial, também podemos fazer uma pesquisa na barra superior, e chegamos à tela de produtos. Clicando em um produto, somos guiados à tela de produto. 
 
-<img src="images/prototype/user-screens.jpg" width="300px">
+<img src="img/prototype/user-screens.jpg" width="300px">
 
 Podemos acessar também as telas de cadastro e login, como mostra o diagrama.
 
 A administração acessa sua tela de login por uma nova URL. Após logar, é mostrada uma tela onde pode pesquisar e acessar cada produto e fazer as devidas modificações. Também pode excluir um lanche e criar um novo, conforme os requisitos. 
 
-<img src="images/prototype/adm-screens.jpg" width="300px">
+<img src="img/prototype/adm-screens.jpg" width="300px">
 
 ## Comentários sobre o código
 
