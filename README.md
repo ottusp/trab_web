@@ -21,7 +21,17 @@
 ## Descrição do Projeto
 Decidimos implementar uma loja online de comidas e lanches de São Carlos. A funcionalidade é semelhante a do iFood, e a interface lembra bastante a navegação da Amazon. Conforme indicam os requisitos, teremos dois tipos de usuários, os clientes e os administradores. O cliente não precisa logar no site para navegar, apenas para finalizar a compra. Nas páginas dos lanches, o cliente pode visualiar informações sobre os produtos, como nome, preço e local de venda. Pode selecionar a quantidade, e colocar observações para o restaurante/lanchonete sobre seu pedido. Além disso, a administração pode, em sua interface, realizar todas as operações descritas nos requisitos sobre lanches: visualizar, atualizar, criar ou excluir. Finalmente, nos esforçamos para dar ao usuário final uma boa usabilidaede  e interfaces responsivas. Esperamos que gostem :)
 
-A tela inicial mostra uma série de refeições que o cliente pode comprar, e clicar em cada imagem leva o usuário à página do produto. Lá, é possível ver 
+A navegação de páginas pode ser visualizada [nesse link](https://www.figma.com/file/BJsdGaZ6d1yaWfED4s2ZAM/Trabalho-de-Web?node-id=75%3A201), no Figma.
+
+A tela inicial mostra uma série de refeições que o cliente pode comprar, e clicar em cada imagem leva o usuário à página do produto. Lá, é possível ver mais informações sobre aquele produto - ou lanche - como preço, local do restaurante/lanchonete, descrição e comentários de outros usuários. Na página inicial, também podemos fazer uma pesquisa na barra superior, e chegamos à tela de produtos. Clicando em um produto, somos guiados à tela de produto. 
+
+<img src="images/prototype/user-screens.jpg" width="300px">
+
+Podemos acessar também as telas de cadastro e login, como mostra o diagrama.
+
+A administração acessa sua tela de login por uma nova URL. Após logar, é mostrada uma tela onde pode pesquisar e acessar cada produto e fazer as devidas modificações. Também pode excluir um lanche e criar um novo, conforme os requisitos. 
+
+<img src="images/prototype/adm-screens.jpg" width="300px">
 
 ## Comentários sobre o código
 
