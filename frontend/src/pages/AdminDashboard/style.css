@@ -1,0 +1,47 @@
+.admin-item-modal-container {
+    max-width: 40%;
+    height: auto;
+
+    border: 0.1em solid black;
+    border-radius: 1em;
+
+    padding: 2% 5%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    background-color: #f6f6f6;
+}
+
+.admin-item-modal-img {
+    height: 30%;
+    width: 30%;
+
+    border: 0em solid black;
+    clip-path: circle();
+}
+
+.admin-item-modal-input-img {
+    width: 70%;
+}
+
+.adm-modal-item-inputs {
+    width: 100%;
+
+    margin: 10% 0;
+}
+
+.adm-modal-item-form-input {
+    width: 100%;
+}
+
+.adm-modal-item-form-input > textarea {
+    min-height: 10em;
+}
+
+.adm-modal-item-form-input > label {
+    font-family: 'Josefin Sans', regular;
+}
