@@ -1,16 +1,15 @@
 .admin-item-modal-container {
-    max-width: 40%;
+    width: 30%;
     height: auto;
 
     border: 0.1em solid black;
     border-radius: 1em;
 
-    padding: 2% 5%;
+    padding: 2% 3%;
 
     display: flex;
     align-items: center;
     justify-content: center;
-
     flex-wrap: wrap;
 
     background-color: #f6f6f6;
@@ -31,17 +30,76 @@
 .adm-modal-item-inputs {
     width: 100%;
 
-    margin: 10% 0;
+    margin: 5% 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .adm-modal-item-form-input {
     width: 100%;
+
+    margin: 3% 0;
 }
 
 .adm-modal-item-form-input > textarea {
     min-height: 10em;
+
+    height: auto;
 }
 
 .adm-modal-item-form-input > label {
     font-family: 'Josefin Sans', regular;
+    font-weight: 400;
+    font-size: 0.75rem;
 }
+
+#adm-modal-item-price, #adm-modal-item-in-stock {
+    width: 45%;
+}
+
+.admin-modal-btn {
+    border: 2px solid #D92027;
+    border-radius: 10px;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: .75rem;
+
+    margin-left: auto;
+
+    padding: 7%;
+
+    text-align: center;
+
+    width: fit-content;
+}
+
+.admin-modal-btn:hover {
+    background-color: #D92027;
+    color: white;
+    transition: 0.4s;
+}
+
+@media (max-width: 1024px) {
+    .admin-item-modal-container {
+        width: 60%;
+    }
+
+    #adm-modal-item-price, #adm-modal-item-in-stock {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .admin-item-modal-container {
+        width: 90%;
+    }
+
+    .admin-modal-btn {
+        padding: 5%;
+    }
+}
+
