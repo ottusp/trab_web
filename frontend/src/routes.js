@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import AdminDashboard from './pages/AdminDashboard/index';
 import Principal from './pages/Principal/index';
+import Product from './pages/Product/index';
 
 export default function Routes() {
     return (
@@ -11,6 +12,7 @@ export default function Routes() {
             <Switch>
                 <Route path="/" exact component={Principal} />
                 <Route path="/admin/home" exact component={AdminDashboard} />
+                <Route path="/product" exact component={Product} />
             </Switch>
         </BrowserRouter>
     );
