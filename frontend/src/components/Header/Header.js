@@ -1,43 +1,38 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-
 import './style.css';
-import logo from './logo.jpg';
-import ShoppingCartRoundedIcon from '@material-ui/icons/ShoppingCartRounded';
-import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
+
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCartRounded';
+import AccountIcon from '@material-ui/icons/AccountCircleRounded';
 import SearchIcon from '@material-ui/icons/Search';
+import MenuIcon from '@material-ui/icons/Menu';
+import logo from './logo.jpg';
 
 export default function Header() {
+    const [showLinks, setShowLinks] = useState(false);
+
     return (
-        <div className="cabecalho header-container">
-            
-            <h1 className="logo">
-                <Link to="/">
-                    <img src={logo} alt="Hungry Points" className="logo-img"/>
-                </Link>
-            </h1>
-            <h1 className="nome">
-                <a href="principal.html" title="name">Hungry Points</a>
-            </h1>
-            <h1 className="itens">
-                <a href="principal.html" title="Carrinho">
-                    <ShoppingCartRoundedIcon fontSize="large"/>
-                    <h3>Carrinho</h3>
-                </a>
-                <a href="principal.html" title="Perfil">
-                    <AccountCircleRoundedIcon fontSize="large"/>
-                    <h3>Entrar</h3>
-                </a>
-            </h1>
-            <div className="container-pesquisa">
-                <form method="post">
-                    <button><SearchIcon /></button>
-                    <input type="text" placeholder="Busque seu lanche"></input>
+        <div className="Header">
+            <div className="leftSide">
+                <button onClick={()=> setShowLinks(!showLinks)}><MenuIcon /></button>
+                <div className="logo">
+                    <Link to="/">
+                        <img src={logo} alt="Hungry Points" className="logo-img"/>
+                    </Link>
+                    <a className="logo-name" href="#" >Hungry Points</a>
+                </div>
+                <div className="links" id={showLinks ? "hidden" : ""}>
+                    <a href="#" ><AccountIcon className="accountIcon"/>Entrar</a>
+                    <a href="#" ><ShoppingCartIcon className="shoppingCartIcon"/>Carrinho</a>
+                </div>
+            </div> 
+            <div className="rightSide">
+                <form id> 
+                    <input type="text" placeholder="Busque seu lanche" required></input>
+                    <button className="search"><SearchIcon /></button>
                 </form>
             </div>
-                      
         </div>
-    );
+    )
 }
+
