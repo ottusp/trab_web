@@ -8,6 +8,10 @@
     -moz-box-sizing: border-box; 
     -webkit-box-sizing: border-box; 
     box-sizing: border-box; 
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: normal;
+
+    --main-background: #fe9c03;
 }
 
 html {

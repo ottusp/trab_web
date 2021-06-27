@@ -1,0 +1,30 @@
+.product-card.card {
+    background-color: var(--main-background);
+    max-width: 25rem;
+    display: flex;
+    align-items: center;
+}
+
+.product-card.content {
+    max-width: 20rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-card.image-container {
+    margin: 1rem auto;
+}
+
+.product-card.image-container > img {
+    width: 20rem;
+
+    border-radius: 1rem;
+}
+
+.product-card.description {
+    text-align: justify;
+
+    margin: 1rem auto 2rem;  
+}

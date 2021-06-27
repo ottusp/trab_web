@@ -1,0 +1,19 @@
+.comment-card {
+    margin: 1rem 0;
+}
+
+.comment-card .card-first-line {
+    padding-right: 1rem;
+}
+
+.comment-card .card-username {
+    font-size: 1.125rem;
+}
+
+.comment-card .card-rating {
+    font-size: 0.9rem;
+}
+
+.comment-card .card-text {
+    font-size: 1rem;
+}
