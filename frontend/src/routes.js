@@ -7,6 +7,8 @@ import Principal from './pages/Principal/index';
 import Product from './pages/Product/index';
 import Search from './pages/Search/index';
 
+
+
 export default function Routes() {
     return (
         <BrowserRouter>
@@ -15,6 +17,8 @@ export default function Routes() {
                 <Route path="/admin/home" exact component={AdminDashboard} />
                 <Route path="/product" exact component={Product} />
                 <Route path="/search" exact component={Search} />
+
+
             </Switch>
         </BrowserRouter>
     );

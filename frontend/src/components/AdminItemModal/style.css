@@ -1,0 +1,124 @@
+.admin-item-modal-container {
+    width: 100%;
+    height: auto;
+
+    border: 0.1em solid black;
+    border-radius: 1em;
+
+    padding: 2% 3%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    background-color: #f6f6f6;
+}
+
+.admin-item-modal-img {
+    height: 30%;
+    width: 30%;
+
+    border: 0em solid black;
+    clip-path: circle();
+}
+
+.admin-item-modal-input-img {
+    width: 70%;
+}
+
+.adm-modal-item-inputs {
+    width: 100%;
+
+    margin: 5% 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.adm-modal-item-form-input {
+    width: 100%;
+
+    margin: 3% 0;
+}
+
+.adm-modal-item-form-input > textarea {
+    min-height: 10em;
+
+    height: auto;
+}
+
+.adm-modal-item-form-input label {
+    font-family: 'Josefin Sans', regular;
+    font-weight: 400;
+    font-size: 0.85rem;
+}
+
+#adm-modal-item-price, #adm-modal-item-in-stock {
+    width: 45%;
+}
+
+.admin-modal-btn {
+    border: 2px solid #D92027;
+    border-radius: 10px;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: .75rem;
+
+    margin-left: auto;
+
+    padding: 7%;
+
+    text-align: center;
+
+    width: 38%;
+}
+
+.admin-modal-btn:hover {
+    background-color: #D92027;
+    color: white;
+    transition: 0.4s;
+}
+
+.admin-modal-item-price-row {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-modal-item-price-row * {
+    height: 100%;
+}
+
+.admin-modal-item-price-row span {
+    height: 100%;
+    border-radius: 0;
+    border-top-left-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
+}
+
+.admin-modal-item-price-row input {
+    width: 100%;
+
+    border-radius: 0;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+}
+
+@media (max-width: 1024px) {
+    #adm-modal-item-price, #adm-modal-item-in-stock {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .admin-modal-btn {
+        padding: 5%;
+    }
+}
+
