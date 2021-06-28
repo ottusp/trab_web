@@ -38,16 +38,26 @@ Além disso, pretendemos salvar no servidor:
 - Informações sobre os produtos, como nome, estabelecimento que o produz e preço;
 
 ## Comentários sobre o código
+Nenhum comentário
 
 ## Plano de testes
-Pretendemos testar nosso front-end usando Junit. Ainda não decidimos sobre as ferramentas de teste para o back-end
+Testamos nosso front-end usando Jest. Ainda não decidimos sobre as ferramentas de teste para o back-end
 
 ## Resultados dos testes
 
 ## Como rodar o projeto
-Por enquanto, basta baixar esse repositória (ou cloná-lo na sua máquina) e abrir os arquivos HTML em um browser clicando duas vezes nos arquivos.
+Para rodar o projeto basta baixar esse repositório (ou cloná-lo na sua máquina).
+Para rodá-lo utilizando o sevidor do react é preciso utilizar o yarn ou o npm, ambos são gerenciadores de pacotes para ambiente Node.js do JavaScript.
+Após instalados com seu gerenciador de pacote padrão execute no terminal no diretório trab_web/frontend:
+yarn start 
+ou se estiver utilizando o npm:
+npm start
+Esse comando vai abrir no seu browser automaticamente uma guia no localhost da porta padrão 3000, e assim você poderá ver a aplicação em execução.
 
 ## Problemas
-Já tivemos problemas relacionados à responsividade do nosso protótipo e com o aprendizado rápido de frameworks de css. O segundo fator impacta no primeiro, fazendo com que a tela principal tenha divergências em relação ao protótipo no Figma. Para o próximo milestone, esperamos ter resolvido esse problema, dominando os frameworks de front-end e dedicando mais tempo à usabilidade das nossas páginas.
+(FirstMilestone) Já tivemos problemas relacionados à responsividade do nosso protótipo e com o aprendizado rápido de frameworks de css. O segundo fator impacta no primeiro, fazendo com que a tela principal tenha divergências em relação ao protótipo no Figma. Para o próximo milestone, esperamos ter resolvido esse problema, dominando os frameworks de front-end e dedicando mais tempo à usabilidade das nossas páginas.
 
 ## Comentários
+(Second Milestone)
+- Problemas detectados no First Milestone foram resolvidos.
+- Dinâmica da apresentação e busca dos produtos e das informações solicitas ao servidor foram implementadas com exemplos simplistas e repetitivos no próprio código para simular a ação do servidor.
