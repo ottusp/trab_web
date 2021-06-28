@@ -15,6 +15,7 @@ export default function AdminItemOverview (props) {
     const name = props.info.name;
     const price = parseFloat(props.info.price).toFixed(2);
     const inStock = props.info.inStock;
+    const img = props.info.img;
     const history = useHistory();
 
     function handleDelete() {
@@ -26,7 +27,7 @@ export default function AdminItemOverview (props) {
         <div className="container admin-item-overview-container">
             <row>
                 <div className="col-2 admin-item-overview-col admin-item-overview-col-with-img">
-                    <img src={sushi} className="admin-item-overview-img" alt="sushi"></img>
+                    <img src={img} className="admin-item-overview-img" alt="sushi"></img>
                 </div>
                 <div className="col-3 admin-item-overview-col">
                     <div className="admin-item-overview-info">

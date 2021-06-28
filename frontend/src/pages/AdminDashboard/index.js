@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import 'bootstrap/js/src/modal'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,25 +6,28 @@ import './style.css'
 
 import AdminItemOverview from '../../components/AdminItemOverview/index';
 import AdminItemModal from '../../components/AdminItemModal/index';
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/index';
+
+import api from '../../services/api';
 
 export default function AdminDashboard () {
-    let products = [{
-                        id: 1,
-                        name: "Sushi",
-                        price: 30.00,
-                        inStock: 20,
-                        description: "comida top uhuu"
-                    },
-                    {
-                        id: 2,
-                        name: "Hamburguer",
-                        price: 15.50,
-                        inStock: 10,
-                        description: "comida daora uhuu"
-                    }]
+    const [products, setProducts] = useState([]);
+    
+    useEffect(async () => {
+        try {
+            const response = await api.get('/products/all');
+            console.log('response: ', response);
+
+            setProducts(response.data);
+        } catch (err) {
+            console.log('erro no get: ', err);
+        }
+    }, []);
 
     return (
         <div className="admin-page">
+            {/* <Header /> */}
             <div className="admin-func">
                 <button className="btn admin-page-new-product-btn" data-bs-toggle="modal" data-bs-target="#item-add-modal">ADICIONAR NOVO PRODUTO</button>
 

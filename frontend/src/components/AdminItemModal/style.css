@@ -45,7 +45,7 @@
 }
 
 .adm-modal-item-form-input > textarea {
-    min-height: 10em;
+    min-height: 10em!important;
 
     height: auto;
 }

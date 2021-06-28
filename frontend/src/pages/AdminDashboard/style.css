@@ -14,17 +14,17 @@
 }
 
 .admin-page-new-product-btn {
-    background-color: #D92027;
-    border: 1px solid black;
-    border-radius: 7px;
+    background-color: #D92027!important;
+    border: 1px solid black!important;
+    border-radius: 7px!important;
 
-    color: #F6F6F6;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 500;
-    font-size: 0.75em;
+    color: #F6F6F6!important;
+    font-family: 'Quicksand', sans-serif!important;
+    font-weight: 500!important;
+    font-size: 0.75em!important;
 
-    width: 10%;
-    height: 100%;
+    width: 10%!important;
+    height: 100%!important;
 
     display: flex;
     align-items: center;
@@ -35,8 +35,8 @@
 
 .admin-page-new-product-btn:hover {
     filter: brightness(90%);
-    color: #f6f6f6;
     transition: 0.2s;
+    color: #4f4f4f!important;
 }
 
 @media (max-width: 1024px) {
