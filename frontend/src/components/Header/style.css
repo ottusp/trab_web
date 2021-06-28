@@ -110,7 +110,7 @@ body{
   color: #fff;
 }
 
-/*Responsive*/
+/*Responsiveness*/
 @media only screen and (max-width: 1100px){
   .leftSide a .accountIcon{
     font-size:33px;

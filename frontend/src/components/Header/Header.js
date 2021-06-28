@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+
 import './style.css';
 
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCartRounded';
@@ -10,6 +12,17 @@ import logo from './logo.jpg';
 
 export default function Header() {
     const [showLinks, setShowLinks] = useState(false);
+    const history = useHistory();
+
+    let search;
+
+    const redirect = () => {
+        var input = document.querySelector("#busca");
+        history.push({
+            pathname: '/search',
+            state: { detail: input.value }
+        });
+    }
 
     return (
         <div className="Header">
@@ -28,8 +41,8 @@ export default function Header() {
             </div> 
             <div className="rightSide">
                 <form id> 
-                    <input type="text" placeholder="Busque seu lanche" required></input>
-                    <button className="search"><SearchIcon /></button>
+                    <input id="busca" type="text" placeholder="Busque seu lanche" required></input>
+                    <button className="search" onClick={redirect} ><SearchIcon /></button>
                 </form>
             </div>
         </div>

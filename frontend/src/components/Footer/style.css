@@ -1,0 +1,11 @@
+.rodape {
+    padding: 5px 5%; 
+    max-width: 100%;
+    background-color: #EB5451; 
+    text-align: center;
+    height: fit-content;
+}
+.rodape .autoria {
+    font-size: 70;
+    font-weight: bold;
+}
