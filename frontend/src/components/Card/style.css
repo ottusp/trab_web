@@ -1,0 +1,32 @@
+.card {
+    margin: 0;
+}
+
+.card p{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.container .row .col-md-4{
+    margin-top: 15px;
+    align-items: center;
+    text-align: justify;
+}
+.container .row .col-md-4 .card{
+    margin-top: 10px;
+    width: 350px;
+    height :100%;
+    align-items: center;
+    text-align: justify;
+    background-color: #fe9c03; 
+}
+
+.card .card-body h3{
+    font-size: 20px;
+}
+.card img {
+    max-height: 40%;
+    padding: 20px;
+    border-radius: 30px;
+}
