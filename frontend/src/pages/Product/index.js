@@ -6,6 +6,7 @@ import './style.css'
 import Header from "../../components/Header/Header";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import CommentCard from "../../components/CommentCard/CommentCard"
+import Footer from '../../components/Footer';
 
 export default function Product() {
 
@@ -15,7 +16,7 @@ export default function Product() {
 
     return (
         <div className="product container">
-            {/* <Header/> */}
+            <Header/>
 
             <div className="product-container row align-items-start justify-content-center">
                 <div className="product-card-container col">
@@ -60,6 +61,7 @@ export default function Product() {
                 </div>
 
             </div>
+            <Footer />
         </div>
     )
 }
