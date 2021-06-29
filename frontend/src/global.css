@@ -12,6 +12,12 @@
     font-weight: normal;
 
     --main-background: #fe9c03;
+    --main-light: #ffe7be;
+
+    --secondary-background: #FFCD3C;
+
+    --product-button-background: #D92027;
+
 }
 
 html {
