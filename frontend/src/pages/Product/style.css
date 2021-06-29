@@ -1,3 +1,29 @@
+.product {
+    background-color: var(--main-light);
+}
+
+.product .product-container {
+    margin: 2rem auto 3rem;
+}
+
 .product .main-info {
     margin-bottom: 1rem;
+}
+
+.product button {
+    padding: .6rem;
+
+    width: 8rem;
+
+    border-radius: .5rem;
+    border: none;
+
+    line-height: 1.2rem;
+    color: white;
+
+    background-color: var(--product-button-background);
+}
+
+.product .comments-container {
+    margin-bottom: 3rem;
 }
