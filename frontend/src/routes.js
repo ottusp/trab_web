@@ -6,6 +6,7 @@ import AdminDashboard from './pages/AdminDashboard/index';
 import Principal from './pages/Principal/index';
 import Product from './pages/Product/index';
 import Search from './pages/Search/index';
+import Login from './pages/Login/index';
 
 
 
@@ -17,6 +18,7 @@ export default function Routes() {
                 <Route path="/admin/home" exact component={AdminDashboard} />
                 <Route path="/product" exact component={Product} />
                 <Route path="/search" exact component={Search} />
+                <Route path="/login" exact component={Login} />
 
 
             </Switch>
