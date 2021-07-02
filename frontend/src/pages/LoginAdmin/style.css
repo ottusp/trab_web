@@ -76,6 +76,10 @@
     font-weight: 400;
 }
 
+.login p{
+    text-align: center;
+}
+
 /*Botão de enviar*/
 #btn{
     background-color:#EB5451;

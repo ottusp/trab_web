@@ -50,6 +50,9 @@
 .login{
     margin: auto;
 }
+.login p{
+    text-align: center;
+}
 /*Título Login*/
 .login .title{
     display: block;
@@ -59,7 +62,6 @@
     font-size: 2em;
     line-height: 48px;
     padding:0px;
-    padding-bottom: 20px;
 }
 /*Barra de input*/
 .form-floating{
@@ -75,7 +77,6 @@
     line-height: 26px;
     font-weight: 400;
 }
-
 /*Botão de enviar*/
 #btn{
     background-color:#EB5451;

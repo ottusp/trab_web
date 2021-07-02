@@ -16,7 +16,7 @@ export default function Product() {
 
     return (
         <div className="product">
-            <div className="container">
+            <div className="container container-principal">
                 <Header/>
 
                 <div className="product-container row align-items-start justify-content-center">
@@ -51,11 +51,11 @@ export default function Product() {
 
                         <div className="buttons-container d-flex justify-content-md-evenly">
 
-                            <button>
+                            <button className="botao">
                                 Adicionar ao carrinho
                             </button>
 
-                            <button>
+                            <button className="botao">
                                 Adicionar novo comentario
                             </button>
                         </div> 

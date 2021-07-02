@@ -35,7 +35,7 @@ export default function Header() {
                     <a className="logo-name" href="/" >Hungry Points</a>
                 </div>
                 <div className="links" id={showLinks ? "hidden" : ""}>
-                    <a href="/" ><AccountIcon className="accountIcon"/>Entrar</a>
+                    <a href="/login" ><AccountIcon className="accountIcon"/>Entrar</a>
                     <a href="/" ><ShoppingCartIcon className="shoppingCartIcon"/>Carrinho</a>
                 </div>
             </div> 

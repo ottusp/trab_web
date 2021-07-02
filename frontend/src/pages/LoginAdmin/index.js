@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import './style.css';
 
-export default function Login(){
+export default function LoginAdmin(){
 
     return (
         <div className="container container-pagina" >
@@ -16,6 +16,7 @@ export default function Login(){
                         
                     <div className="login container container-infos"> 
                         <h2 className="title">Login</h2>
+                        <p>[Administrador]</p>
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="floatingInput" placeholder="Email" />
                             <label for="floatingInput">Email</label>

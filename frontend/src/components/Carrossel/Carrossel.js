@@ -6,10 +6,10 @@ import 'bootstrap/js/src/util'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Carousel} from 'react-bootstrap'
 
+
 import burguer from './burguer.jpg';
 import batata from './batata.jpg';
 import sorvete from './sorvete.jpg';
-import macarrao from './macarrao.jpg';
 
 export default function Carroussel() {
   return (
