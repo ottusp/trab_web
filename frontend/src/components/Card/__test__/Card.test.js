@@ -3,7 +3,7 @@ import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Card from './index';
+import Card from '../index';
 
 const products = [
     {

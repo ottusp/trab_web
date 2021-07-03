@@ -1,10 +1,10 @@
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 
-import Principal from './index';
+import Principal from '../index';
 
 let container = null;
 

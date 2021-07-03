@@ -39,10 +39,12 @@ export default function CartModal(props) {
     }
 
     const handleClearRow = () => {
+        if(props.handleSubmitMock) props.handleSubmitMock();
         alert("Carrinho esvaziado");
     }
 
     const handleConfirmPurchase = () => {
+        if (props.handleSubmitMock) props.handleSubmitMock();
         alert("Sua compra foi confirmada");
     }
 
@@ -59,7 +61,7 @@ export default function CartModal(props) {
 
             <div className="modal-body">
                 {orders.data.map(order => (
-                    <CartModalListItem order={order} />
+                    <CartModalListItem key={order.name} order={order} />
                 ))}
                 <div className="total-price-container">
                     <div className="total-price">

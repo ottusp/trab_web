@@ -1,8 +1,9 @@
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import AdminItemOverview from './index';
+import AdminDashboard from '../index';
 
 const products = [
     {
@@ -53,35 +54,42 @@ afterEach(() => {
 
 it("Renders without crashing", () => {
     act(() => {
-        render(<AdminItemOverview />, container);
+        render(<Router><AdminDashboard /></Router>, container);
     });
 });
 
-it("Fills its fields with info passed", () => {
+it ("Renders 3 mocked items", () => {
     act(() => {
-        render(<AdminItemOverview info={products[0]} />, container);
+        render(<Router><AdminDashboard /></Router>, container);
     });
 
-    expect(document.getElementById("admin-item-overview-name").innerHTML).toBe(products[0].name);
-    expect(document.getElementById("admin-item-overview-price").innerHTML).toBe(`R$ ${parseFloat(products[0].price).toFixed(2)}`);
-    expect(document.getElementById("admin-item-overview-in-stock").innerHTML).toBe(products[0].inStock.toString());
-})
+    let overviewItems = document.getElementsByClassName("overview-item");
+    expect(overviewItems.length).toBe(3);
+});
 
-it("Deletes when button delete is clicked", () => {
-    const handleDelete = jest.fn();
-    window.alert = jest.fn();
-
+it("Should work when Add Product button is clicked", () => {
+    let handleAddProductButton = jest.fn();
     act(() => {
-        render(<AdminItemOverview info={products[0]} handleDeleteMock={handleDelete} />, container);
+        render(<Router><AdminDashboard addProductMock={handleAddProductButton}/></Router>, container);
     });
 
-    const button = document.getElementById("admin-item-overview-delete-btn");
+    const button = document.getElementsByClassName("admin-page-new-product-btn")[0];
 
-    expect(handleDelete).toHaveBeenCalledTimes(0);
+    expect(handleAddProductButton).toHaveBeenCalledTimes(0);
 
     act(() => {
         button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     });
 
-    expect(handleDelete).toHaveBeenCalledTimes(1);
+    expect(handleAddProductButton).toHaveBeenCalledTimes(1);
+});
+
+it("Should render modals successfully", () => {
+    act(() => {
+        render(<Router><AdminDashboard /></Router>, container);
+    });
+
+    const modals = document.getElementsByClassName("modal");
+    
+    expect(modals.length).toBe(4); //4 modals. 1 modal pra adicionar produto e 3 modais de edicao pros 3 produtos mockados
 });

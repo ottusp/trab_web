@@ -23,7 +23,7 @@ export default function Product() {
 
     return (
         <div className="product">
-            <div className="container container-principal">
+            <div className="container">
                 <Header/>
 
                 <div className="product-container row align-items-start justify-content-center">
@@ -67,7 +67,7 @@ export default function Product() {
 
                         <div className="buttons-container d-flex justify-content-md-evenly">
 
-                            <button className="btn product-button" data-bs-toggle="modal" data-bs-target="#add-to-cart-modal">
+                            <button id="cart-button" className="product-button" data-bs-toggle="modal" data-bs-target="#add-to-cart-modal">
                                 Adicionar ao carrinho
                             </button>
 
