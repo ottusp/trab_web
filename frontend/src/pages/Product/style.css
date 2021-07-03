@@ -10,10 +10,10 @@
     margin-bottom: 1rem;
 }
 
-.product button {
+.product .product-button {
     padding: .6rem;
 
-    width: 8rem;
+    max-width: 8rem;
 
     border-radius: .5rem;
     border: none;
