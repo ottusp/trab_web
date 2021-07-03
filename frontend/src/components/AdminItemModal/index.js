@@ -14,22 +14,26 @@ export default function AdminItemModal (props) {
     const [description, setDescription] = useState("");
     const [img, setImg] = useState("");
 
-    const history = useHistory();
+    let history = useHistory();
 
     useEffect(() => {
         if (props.type === "edit") {
             setBtnLabel("EDITAR");
-            setName(props.info.name);
-            setPrice(parseFloat(props.info.price).toFixed(2));
-            setInStock(props.info.inStock);
-            setDescription(props.info.description);
-            setImg(props.info.img);
+
+            if (props.info) {
+                setName(props.info.name);
+                setPrice(parseFloat(props.info.price).toFixed(2));
+                setInStock(props.info.inStock);
+                setDescription(props.info.description);
+                setImg(props.info.img);
+            }
         }
     }, []);
 
     function handleSubmit() {
+        if(props.handleSubmitMock) props.handleSubmitMock();
         alert('Enviado!');
-        history.go(0);
+        // history.go(0);
     }
 
 
@@ -58,7 +62,7 @@ export default function AdminItemModal (props) {
                 <div className="adm-modal-item-form-input input-group" id="adm-modal-item-price">
                     <row className="admin-modal-item-price-row">
                         <div className="col-4">
-                            <span class="input-group-text">R$</span>
+                            <span className="input-group-text">R$</span>
                         </div>
                         <div className="col-8">
                             <div className="form-floating">

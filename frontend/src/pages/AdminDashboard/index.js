@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
-import 'bootstrap/js/src/modal'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import bootstrap from 'bootstrap'
+// import 'bootstrap/js/src/modal'
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css'
 
 import AdminItemOverview from '../../components/AdminItemOverview/index';
@@ -11,25 +12,49 @@ import Footer from '../../components/Footer/index';
 
 import api from '../../services/api';
 
-export default function AdminDashboard () {
-    const [products, setProducts] = useState([]);
+export default function AdminDashboard (props) {
+    // const [products, setProducts] = useState([]);
     
-    useEffect(async () => {
-        try {
-            const response = await api.get('/products/all');
-            console.log('response: ', response);
+    // useEffect(async () => {
+    //     try {
+    //         const response = await api.get('/products/all');
+    //         console.log('response: ', response);
 
-            setProducts(response.data);
-        } catch (err) {
-            console.log('erro no get: ', err);
+    //         setProducts(response.data);
+    //     } catch (err) {
+    //         console.log('erro no get: ', err);
+    //     }
+    // }, []);
+
+    const products = [
+        {
+            id: 1,
+            name: "Cookies - Loja X",
+            description: "Dois cookies de gotas de chocolate, muito crocantes feitos em esetilo americano. Feito com farinha de trigo integral, sem glúten.",
+            price: 7.50,
+            inStock: 10,
+        },
+        {
+            id: 2,
+            name: "Sushi - Loja Y",
+            description: "4 skin maki + 4 kani maki + 4 tortinha cheese + 4 shake garlic + 4 niguiri salmão + 4 niguiri kani + 6 hot filadélfia.",
+            price: 15.90,
+            inStock: 20,
+        },
+        {
+            id: 3,
+            name: "Caldo - Loja Z",
+            description: "Deliciosa e saborosa sopa de abóbora , feita com abobora em creme batida linguiça calabresa defumada e carne de sol desfiada.",
+            price: 9,
+            inStock: 30,
         }
-    }, []);
+    ]
 
     return (
         <div className="admin-page">
-            {/* <Header /> */}
+            <Header />
             <div className="admin-func">
-                <button className="btn admin-page-new-product-btn" data-bs-toggle="modal" data-bs-target="#item-add-modal">ADICIONAR NOVO PRODUTO</button>
+                <button className="btn admin-page-new-product-btn" data-bs-toggle="modal" data-bs-target="#item-add-modal" onClick={props?.addProductMock}>ADICIONAR NOVO PRODUTO</button>
 
                 <div id="item-add-modal" className="modal fade admin-edit-modal" tabindex="-1">
                     <div className="modal-dialog">
