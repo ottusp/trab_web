@@ -16,7 +16,7 @@ export default function Search(){
     return (
         <div className="container-principal">
             <Header />
-            <div className="container container-title">Resultados para a pesquisa de <b>{location.state.detail}</b>:</div>
+            <div className="container container-title">Resultados para a pesquisa de <b>{location?.state?.detail}</b>:</div>
             <ShowProducts 
                 img1={sushi}
                 title1="Sushi"
