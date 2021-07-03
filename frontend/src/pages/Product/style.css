@@ -4,6 +4,7 @@
 
 .product .product-container {
     margin: 2rem auto 3rem;
+    margin-top: 130px;
 }
 
 .product .main-info {
@@ -26,4 +27,10 @@
 
 .product .comments-container {
     margin-bottom: 3rem;
+}
+
+.container-principal{
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
 }

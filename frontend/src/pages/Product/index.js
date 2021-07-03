@@ -23,7 +23,7 @@ export default function Product() {
 
     return (
         <div className="product">
-            <div className="container">
+            <div className="container container-principal">
                 <Header/>
 
                 <div className="product-container row align-items-start justify-content-center">

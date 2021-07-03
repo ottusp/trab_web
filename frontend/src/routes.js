@@ -7,7 +7,9 @@ import Principal from './pages/Principal/index';
 import Product from './pages/Product/index';
 import Search from './pages/Search/index';
 import Login from './pages/Login/index';
-
+import LoginAdmin from './pages/LoginAdmin/index';
+import Cadastro from './pages/Cadastro/index';
+import CadastroAdmin from './pages/CadastroAdmin/index';
 
 
 export default function Routes() {
@@ -19,6 +21,9 @@ export default function Routes() {
                 <Route path="/product" exact component={Product} />
                 <Route path="/search" exact component={Search} />
                 <Route path="/login" exact component={Login} />
+                <Route path="/cadastro" exact component={Cadastro} />
+                <Route path="/cadastroAdmin" exact component={CadastroAdmin} />
+                <Route path="/loginAdmin" exact component={LoginAdmin} />
 
 
             </Switch>

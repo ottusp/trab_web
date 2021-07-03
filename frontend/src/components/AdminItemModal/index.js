@@ -12,28 +12,46 @@ export default function AdminItemModal (props) {
     const [price, setPrice] = useState("");
     const [inStock, setInStock] = useState("");
     const [description, setDescription] = useState("");
+    const [img, setImg] = useState("");
 
-    const history = useHistory();
+    let history = useHistory();
 
     useEffect(() => {
         if (props.type === "edit") {
             setBtnLabel("EDITAR");
-            setName(props.info.name);
-            setPrice(parseFloat(props.info.price).toFixed(2));
-            setInStock(props.info.inStock);
-            setDescription(props.info.description);
+
+            if (props.info) {
+                setName(props.info.name);
+                setPrice(parseFloat(props.info.price).toFixed(2));
+                setInStock(props.info.inStock);
+                setDescription(props.info.description);
+                setImg(props.info.img);
+            }
         }
     }, []);
 
     function handleSubmit() {
+        if(props.handleSubmitMock) props.handleSubmitMock();
         alert('Enviado!');
-        history.go(0);
+        // history.go(0);
+    }
+
+
+    //tentando fazer isso aqui funcionar ainda
+    function updateImg(inputFile) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            let imgToUpdate = document.getElementById(`img-preview-item-modal-${props.info?.id ? props.info.id : 'create'}`);
+            console.log(imgToUpdate);
+            // img.src = e.target.result;
+        }
+        reader.readAsDataURL(inputFile);
     }
 
     return (
         <div className="container admin-item-modal-container">
-            <img src={sushi} className="admin-item-modal-img" alt="sushi" />
-            <input type="file" className="admin-item-modal-input-img"/>
+            <img id={`img-preview-item-modal-${props.info?.id ? props.info.id : 'create'}`} src={sushi} className="admin-item-modal-img" alt="sushi" />
+            <input type="file" className="admin-item-modal-input-img" onChange={ (e) => updateImg(e.target.files[0]) }/>
             
             <div className="adm-modal-item-inputs">
                 <div className="form-floating adm-modal-item-form-input">
@@ -43,10 +61,10 @@ export default function AdminItemModal (props) {
 
                 <div className="adm-modal-item-form-input input-group" id="adm-modal-item-price">
                     <row className="admin-modal-item-price-row">
-                        <div className="col-3">
-                            <span class="input-group-text">$</span>
+                        <div className="col-4">
+                            <span className="input-group-text">R$</span>
                         </div>
-                        <div className="col-9">
+                        <div className="col-8">
                             <div className="form-floating">
                                 <input type="number" className="form-control" id="admin-item-modal-floating-price" placeholder="Preco" value={price} onChange={e => setPrice(e.target.value)} />
                                 <label for="admin-item-modal-floating-price">Preco</label>
