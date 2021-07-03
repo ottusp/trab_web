@@ -1,0 +1,98 @@
+/*Config geral*/
+.container-pagina{
+    max-width: 100%;
+    padding: 0;
+    margin:0;
+}
+
+.container-pagina .row{
+    display: flex;
+    width: 100%;
+    padding: 0;
+    margin:0;
+}
+
+/*Container à esquerda*/
+#esquerda{
+    padding: 0;
+    margin:0;
+    display: flex;
+    flex: 70%;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vmin;
+    background-image:url(./fundo.jpg);
+    box-shadow: inset 0 0 0 10000px rgba(247, 247, 122, 0.5);
+}
+/*Nome do site*/
+.col-fluid-md-6 > h1{
+    font-family: Josefin Sans;
+    font-style: normal;
+    font-weight: 600px;
+    font-size: 100px;
+    line-height: 100px;
+    text-align: center;
+}
+
+/*Container à direita*/
+#direita{
+    padding: 0;
+    margin:0;
+    display: flex;
+    flex: 30%;
+    background-color: #fe9c03;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Section de login*/
+.login{
+    margin: auto;
+}
+.login p{
+    text-align: center;
+}
+/*Título Login*/
+.login .title{
+    display: block;
+    text-transform:uppercase;
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 2em;
+    line-height: 48px;
+    padding:0px;
+}
+/*Barra de input*/
+.form-floating{
+    position: relative;
+    margin:0 px;
+    margin-top: 20px;
+}
+/*Input*/
+.form-floating input{
+    border-width: 0 0 0px 0;  
+    border-radius: 10px; 
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 400;
+}
+/*Botão de enviar*/
+#btn{
+    background-color:#EB5451;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+/*Link de não cadastrado*/
+#link{
+    display: block;
+    text-decoration-line: underline; 
+    color:black;
+    padding-top: 2px;
+    margin-top: 20px;
+}

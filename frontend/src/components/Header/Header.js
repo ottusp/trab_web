@@ -14,14 +14,14 @@ export default function Header() {
     const [showLinks, setShowLinks] = useState(false);
     const history = useHistory();
 
-    let search;
-
     const redirect = () => {
         var input = document.querySelector("#busca");
-        history.push({
-            pathname: '/search',
-            state: { detail: input.value }
-        });
+        if(input.value != ""){
+            history.push({
+                pathname: '/search',
+                state: { detail: input.value }
+            });
+        }
     }
 
     return (
@@ -32,20 +32,19 @@ export default function Header() {
                     <Link to="/">
                         <img src={logo} alt="Hungry Points" className="logo-img"/>
                     </Link>
-                    <a className="logo-name" href="#" >Hungry Points</a>
+                    <a className="logo-name" href="/" >Hungry Points</a>
                 </div>
                 <div className="links" id={showLinks ? "hidden" : ""}>
-                    <a href="#" ><AccountIcon className="accountIcon"/>Entrar</a>
-                    <a href="#" ><ShoppingCartIcon className="shoppingCartIcon"/>Carrinho</a>
+                    <a href="/login" ><AccountIcon className="accountIcon"/>Entrar</a>
+                    <a href="/" ><ShoppingCartIcon className="shoppingCartIcon"/>Carrinho</a>
                 </div>
             </div> 
             <div className="rightSide">
                 <form id> 
                     <input id="busca" type="text" placeholder="Busque seu lanche" required></input>
-                    <button className="search" onClick={redirect} ><SearchIcon /></button>
+                        <button className="search" onClick={redirect} ><SearchIcon /></button>
                 </form>
             </div>
         </div>
     )
 }
-

@@ -47,12 +47,26 @@ Testamos nosso front-end usando Jest. Ainda não decidimos sobre as ferramentas 
 
 ## Como rodar o projeto
 Para rodar o projeto basta baixar esse repositório (ou cloná-lo na sua máquina).
-Para rodá-lo utilizando o sevidor do react é preciso utilizar o yarn ou o npm, ambos são gerenciadores de pacotes para ambiente Node.js do JavaScript.
-Após instalados com seu gerenciador de pacote padrão execute no terminal no diretório trab_web/frontend:
+
+Para rodá-lo utilizando o sevidor do react você pode utilizar o yarn ou o npm, ambos são gerenciadores de pacotes para ambiente Node.js do JavaScript.
+
+Após instalados com seu gerenciador de pacote padrão execute no terminal no diretório trab_web/frontend o seguinte comando para baixar as dependências do projeto:
+yarn install 
+
+ou se estiver utilizando o npm:
+npm install
+
+Para iniciar o seridor basta usar o comando abaixo:
 yarn start 
+
 ou se estiver utilizando o npm:
 npm start
+
 Esse comando vai abrir no seu browser automaticamente uma guia no localhost da porta padrão 3000, e assim você poderá ver a aplicação em execução.
+Se quiser acessar alguma página manualmente digite no broser seu caminho:
+Exemplo para a página de login: http://localhost:3000/login
+
+Você pode encontrar o caminho para todas as páginas acessando trab_web/frontend/src/routes.js
 
 ## Problemas
 (FirstMilestone) Já tivemos problemas relacionados à responsividade do nosso protótipo e com o aprendizado rápido de frameworks de css. O segundo fator impacta no primeiro, fazendo com que a tela principal tenha divergências em relação ao protótipo no Figma. Para o próximo milestone, esperamos ter resolvido esse problema, dominando os frameworks de front-end e dedicando mais tempo à usabilidade das nossas páginas.
