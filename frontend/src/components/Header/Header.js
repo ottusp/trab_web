@@ -10,11 +10,15 @@ import SearchIcon from '@material-ui/icons/Search';
 import MenuIcon from '@material-ui/icons/Menu';
 import logo from './logo.jpg';
 
-export default function Header() {
+export default function Header(props) {
     const [showLinks, setShowLinks] = useState(false);
     const history = useHistory();
 
     const redirect = () => {
+        if (props?.redirectTest) {
+            props.redirectTest();
+        }
+        
         var input = document.querySelector("#busca");
         if(input.value != ""){
             history.push({
