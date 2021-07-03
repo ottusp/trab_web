@@ -4,7 +4,7 @@ import { act } from "react-dom/test-utils";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 
-import Carrossel from './Carrossel';
+import Carrossel from '../Carrossel';
 
 let container = null;
 

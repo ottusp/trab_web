@@ -3,7 +3,7 @@ import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import ProductCard from './ProductCard';
+import ShowProducts from '../index';
 
 let container = null;
 
@@ -30,6 +30,16 @@ afterEach(() => {
 
 it("Renders without crashing", () => {
     act(() => {
-        render(<Router><ProductCard /></Router>, container);
+        render(<Router><ShowProducts /></Router>, container);
     });
+});
+
+it("Should render 9 cards", () => {
+    act(() => {
+        render(<Router><ShowProducts /></Router>, container);
+    });
+
+    let cards = document.getElementsByClassName("col-md-4");
+
+    expect(cards.length).toBe(9);
 });
