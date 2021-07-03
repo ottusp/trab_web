@@ -3,11 +3,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './style.css';
 
-export default function CommentCard() {
+export default function CommentCard(props) {
 
-    let userName = "Lucas Romero";
-    let commentContent = "Eu amo esse sushi, acho ele muito tope. Uma vez, eu pedi ele 10 vezes na minha casa no mesmo mês, e não me arrependo. Nota 10!";
-    let rating = "0.3";
+    const comment = {
+        userName: props.userName,
+        rating: props.rating,
+        content: props.content,
+    }
+
     const ratingMax = "5.0"
 
     return (
@@ -17,16 +20,16 @@ export default function CommentCard() {
 
                     <div className="card-first-line d-flex justify-content-md-between">
                         <div className="card-username">
-                            {userName}
+                            {comment.userName}
                         </div>
 
                         <div className="card-rating">
-                            Avalidação: {rating}/{ratingMax}
+                            Avaliação: {comment.rating}/{ratingMax}
                         </div>
                     </div>
 
                     <p className="card-text">
-                        {commentContent}
+                        {comment.content}
                     </p>
                 </div>
             </div>

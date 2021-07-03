@@ -20,10 +20,12 @@ export default function Header(props) {
         }
         
         var input = document.querySelector("#busca");
-        if(input.value != ""){
+        if(input.value !== ""){
             history.push({
                 pathname: '/search',
-                state: { detail: input.value }
+                state: {
+                    detail: input.value
+                }
             });
         }
     }
@@ -31,7 +33,7 @@ export default function Header(props) {
     return (
         <div className="Header">
             <div className="leftSide">
-                <button onClick={()=> setShowLinks(!showLinks)}><MenuIcon /></button>
+                <button data-testid="show-links-button" onClick={()=> setShowLinks(!showLinks)}><MenuIcon /></button>
                 <div className="logo">
                     <Link to="/">
                         <img src={logo} alt="Hungry Points" className="logo-img"/>
@@ -43,10 +45,11 @@ export default function Header(props) {
                     <a href="/" ><ShoppingCartIcon className="shoppingCartIcon"/>Carrinho</a>
                 </div>
             </div> 
+
             <div className="rightSide">
                 <form id> 
                     <input id="busca" type="text" placeholder="Busque seu lanche" required></input>
-                        <button className="search" onClick={redirect} ><SearchIcon /></button>
+                    <button className="search" onClick={redirect} ><SearchIcon /></button>
                 </form>
             </div>
         </div>

@@ -1,0 +1,23 @@
+.cart-modal-list-item {
+    background-color: var(--main-background);
+    
+    margin: .75rem 0.5rem;
+    padding: 0.5rem .75rem;
+    border-radius: .4rem;
+
+    color: black;
+}
+
+.cart-modal-list-item.container .item-info.row {
+    margin: 0;
+
+}
+
+.cart-modal-list-item .subtotal-container{
+    background-color: var(--main-light);
+}
+
+.cart-modal-list-item .small-text{
+    font-size: .8rem;
+    line-height: 1rem;
+}
