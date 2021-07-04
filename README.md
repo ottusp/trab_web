@@ -41,9 +41,21 @@ Além disso, pretendemos salvar no servidor:
 Nenhum comentário
 
 ## Plano de testes
-Testamos nosso front-end usando Jest. Ainda não decidimos sobre as ferramentas de teste para o back-end
+
+Testamos nosso front-end usando a framework para teste de JavaScript Jest.
+
+Testamos a maioria das páginas e componentes descartando páginas simplistas como de login e cadastro.
+
+Todos os códigos dos testes feitos se encontram anexados em arquivos do tipo "__test__" nas pastas das páginas e componentes nos quais os testes foram realizados.
+
+Caso queira testar é só executar o comando: npm test, no próprio terminal 
+
+Ainda não decidimos sobre as ferramentas de teste para o back-end
 
 ## Resultados dos testes
+Todos os testes realizados deram resultado positivo, como ilustra o print abaixo mostrando a realização de 32 testes em 13 pastas distintas correspondentes aos componentes e páginas do app.
+
+<img src="img/prototype/results.jpg" width="300px">
 
 ## Como rodar o projeto
 Para rodar o projeto basta baixar esse repositório (ou cloná-lo na sua máquina).
