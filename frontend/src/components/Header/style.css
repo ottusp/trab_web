@@ -31,7 +31,7 @@ body{
   margin-left: 15px;
 }
 
-.leftSide button{
+.leftSide .menu{
   display: none;
   border : none;
   margin-left: 15px;
@@ -39,9 +39,6 @@ body{
   border-radius: 5%;
 }
 
-.Header .leftSide .links a:hover{
-  color: #e78d01;
-}
 
 .leftSide .logo a img{
   max-width: 100%; 
@@ -51,19 +48,13 @@ body{
 }
 
 .Header .leftSide .links{
+  display: flex;
   padding-left: 200px;
   max-height:80px;
 }
 
 .Header .leftSide #hidden{
   display:flex;
-}
-
-.Header .leftSide .links a{
-  text-decoration: none;
-  color: black;
-  font-size: 25px;
-  margin-left: 30px;
 }
 
 .leftSide a .accountIcon{
@@ -73,6 +64,20 @@ body{
   font-size:30px;
 }
 
+#dropdown-basic-button{
+  background-color: #e78d01;
+  color:black; 
+  font-size: 15px;
+  margin:5px;
+}
+
+.Header .leftSide .links .carrinho-btn{
+  text-decoration: none;
+  color: black;
+  background-color: #e78d01;
+  font-size: 15px;
+  margin:5px;
+}
 
 /*rightSide*/
 
@@ -110,7 +115,49 @@ body{
   color: #fff;
 }
 
+.dropdown-item{
+  font-size:15px;
+}
+
+.admin-edit-modal {
+  height: 100%;
+  width: 100%;
+}
+.admin-edit-modal .modal-content {
+  width: 100%;
+
+  border-radius: 1em;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+
 /*Responsiveness*/
+
+@media (max-width: 1024px) {
+  .admin-edit-modal .modal-content {
+      width: 70%;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-edit-modal .modal-content {
+      width: 90%;
+  }
+}
+
+@media only screen and (max-width: 1150px){
+  .Header .leftSide .links{
+    padding-left:60px;
+  }
+  .dropdown-item{
+    font-size:15px;
+    margin-left:0px;
+  }
+}
 @media only screen and (max-width: 1100px){
   .leftSide a .accountIcon{
     font-size:33px;
@@ -118,40 +165,36 @@ body{
   .leftSide a .shoppingCartIcon{
     font-size:33px;
   }
-  .Header .leftSide .links a{
-    font-size: 23px;
-    margin-left: 12px;
-  }
+
   .Header .leftSide .logo a{
     font-size: 31px;
   }
-}
-@media only screen and (max-width: 1150px){
   .Header .leftSide .links{
-    padding-left:80px;
+    padding-left:40px;
+  }
+  .dropdown-item{
+    font-size:15px;
+    margin-left:0px;
   }
 }
+
 @media only screen and (max-width: 940px){
-  .leftSide a .accountIcon{
-    font-size:27px;
-  }
-  .leftSide a .shoppingCartIcon{
-    font-size:27px;
-  }
   .Header .leftSide .links{
-    padding-left: 40px;
+    padding-left: 8px;
   }
-  .Header .leftSide .links a{
-    font-size: 20px;
-    margin-left: 10px;
-  }
+
   .Header .leftSide .logo a{
     font-size: 27px;
+    margin-left: 0px;
+  }
+  .dropdown-item{
+    font-size:15px;
+    margin-left:0px;
   }
 }
 
 @media only screen and (max-width: 850px){
-  .leftSide button{
+  .leftSide .menu{
     display: flex;
   }
   .Header .leftSide .links{
@@ -182,9 +225,11 @@ body{
   flex-direction: column;
   align-items: center;
   }
-  .Header .leftSide #hidden a{
-    margin: 10px;
-    font-size: 25px;
+  .Header .leftSide #hidden .item{
+    font-size: 15px;
+  }
+  .dropdown-item{
+    font-size:15px;
   }
 }
 

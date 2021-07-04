@@ -72,6 +72,7 @@ export default function AdminDashboard (props) {
                     ))
                 }
             </div>
+            <Footer />
         </div>
     ); 
 }

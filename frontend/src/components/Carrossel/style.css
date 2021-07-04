@@ -21,6 +21,7 @@
 
 .carousel-indicators{
     top:0;
+    height: 30px;
 }
 
 .container-carroussel .row .col-md-6 h2{

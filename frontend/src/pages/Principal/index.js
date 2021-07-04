@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Header from '../../components/Header/Header';
@@ -19,7 +18,7 @@ import espetinho from './espetinho.jpg';
 
 export default function Principal(){
     return (
-        <div className="container-principal">
+        <div className="container container-principal">
             <Header />
             <Carrossel />
             <ShowProducts 

@@ -1,0 +1,124 @@
+.perfil-item-modal-container {
+    width: 100%;
+    height: auto;
+
+    border: 0.1em solid black;
+    border-radius: 1em;
+
+    padding: 2% 3%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    background-color: #f3b757;
+}
+
+.perfil-item-modal-img {
+    height: 30%;
+    width: 30%;
+
+    border: 0em solid black;
+    clip-path: circle();
+}
+
+.perfil-item-modal-input-img {
+    width: 70%;
+}
+
+.pfl-modal-item-inputs {
+    width: 100%;
+
+    margin: 5% 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.pfl-modal-item-form-input {
+    width: 100%;
+
+    margin: 3% 0;
+}
+
+.pfl-modal-item-form-input > textarea {
+    min-height: 10em!important;
+
+    height: auto;
+}
+
+.pfl-modal-item-form-input label {
+    font-family: 'Josefin Sans', regular;
+    font-weight: 400;
+    font-size: 0.85rem;
+}
+
+#pfl-modal-item-price, #pfl-modal-item-in-stock {
+    width: 45%;
+}
+
+.perfil-modal-btn {
+    border: 2px solid #D92027;
+    border-radius: 10px;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: .75rem;
+
+    margin-left: auto;
+
+    padding: 7%;
+
+    text-align: center;
+
+    width: 38%;
+}
+
+.perfil-modal-btn:hover {
+    background-color: #D92027;
+    color: white;
+    transition: 0.4s;
+}
+
+.perfil-modal-item-price-row {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.perfil-modal-item-price-row * {
+    height: 100%;
+}
+
+.perfil-modal-item-price-row span {
+    height: 100%;
+    border-radius: 0;
+    border-top-left-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
+}
+
+.perfil-modal-item-price-row input {
+    width: 100%;
+
+    border-radius: 0;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+}
+
+@media (max-width: 1024px) {
+    #pfl-modal-item-price, #pfl-modal-item-in-stock {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .perfil-modal-btn {
+        padding: 5%;
+    }
+}
+

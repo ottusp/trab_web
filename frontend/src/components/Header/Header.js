@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import {DropdownButton, Dropdown} from 'react-bootstrap'
+import ModalEditPerfil from '../../components/ModalEditPerfil/index';
 
 import './style.css';
 
@@ -31,7 +33,7 @@ export default function Header(props) {
     return (
         <div className="Header">
             <div className="leftSide">
-                <button onClick={()=> setShowLinks(!showLinks)}><MenuIcon /></button>
+                <button className="menu" onClick={()=> setShowLinks(!showLinks)}><MenuIcon /></button>
                 <div className="logo">
                     <Link to="/">
                         <img src={logo} alt="Hungry Points" className="logo-img"/>
@@ -39,8 +41,12 @@ export default function Header(props) {
                     <a className="logo-name" href="/" >Hungry Points</a>
                 </div>
                 <div className="links" id={showLinks ? "hidden" : ""}>
-                    <a href="/login" ><AccountIcon className="accountIcon"/>Entrar</a>
-                    <a href="/" ><ShoppingCartIcon className="shoppingCartIcon"/>Carrinho</a>
+                    <DropdownButton id="dropdown-basic-button" title="Entrar">
+                        <Dropdown.Item className="item" href="/login">Usuário</Dropdown.Item>
+                        <Dropdown.Item className="item" href="/loginAdmin">Administrador</Dropdown.Item>
+                        <Dropdown.Item className="item" data-bs-toggle="modal" data-bs-target={`#item-edit-modal-${props.id}`}>Editar</Dropdown.Item>
+                    </DropdownButton>
+                    <button className="btn item carrinho-btn" href="/carrinho" ><ShoppingCartIcon className="shoppingCartIcon"/>Carrinho</button>
                 </div>
             </div> 
             <div className="rightSide">
@@ -48,6 +54,13 @@ export default function Header(props) {
                     <input id="busca" type="text" placeholder="Busque seu lanche" required></input>
                         <button className="search" onClick={redirect} ><SearchIcon /></button>
                 </form>
+            </div>
+            <div id={`item-edit-modal-${props.id}`} className="modal fade admin-edit-modal" tabindex="-1">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <ModalEditPerfil />
+                    </div>
+                </div>
             </div>
         </div>
     )
