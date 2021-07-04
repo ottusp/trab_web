@@ -1,0 +1,21 @@
+.cart-modal .button-row {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 1rem 2rem;
+}
+
+.cart-modal .total-price-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cart-modal .clear-cart-button {
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--danger-red);
+}
+
+.cart-modal .end-purchase-button {
+    background-color: var(--confirm-green);
+    color: white;
+}

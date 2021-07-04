@@ -22,10 +22,12 @@ export default function Header(props) {
         }
         
         var input = document.querySelector("#busca");
-        if(input.value != ""){
+        if(input.value !== ""){
             history.push({
                 pathname: '/search',
-                state: { detail: input.value }
+                state: {
+                    detail: input.value
+                }
             });
         }
     }
@@ -33,7 +35,8 @@ export default function Header(props) {
     return (
         <div className="Header">
             <div className="leftSide">
-                <button className="menu" onClick={()=> setShowLinks(!showLinks)}><MenuIcon /></button>
+
+                <button className="menu" data-testid="show-links-button" onClick={()=> setShowLinks(!showLinks)}><MenuIcon /></button>
                 <div className="logo">
                     <Link to="/">
                         <img src={logo} alt="Hungry Points" className="logo-img"/>
@@ -49,10 +52,11 @@ export default function Header(props) {
                     <button className="btn item carrinho-btn" href="/carrinho" ><ShoppingCartIcon className="shoppingCartIcon"/>Carrinho</button>
                 </div>
             </div> 
+
             <div className="rightSide">
                 <form id> 
                     <input id="busca" type="text" placeholder="Busque seu lanche" required></input>
-                        <button className="search" onClick={redirect} ><SearchIcon /></button>
+                    <button className="search" onClick={redirect} ><SearchIcon /></button>
                 </form>
             </div>
             <div id={`item-edit-modal-${props.id}`} className="modal fade admin-edit-modal" tabindex="-1">

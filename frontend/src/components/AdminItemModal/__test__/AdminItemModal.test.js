@@ -2,7 +2,7 @@ import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 
-import AdminItemModal from './index';
+import AdminItemModal from '../index';
 
 const products = [
     {

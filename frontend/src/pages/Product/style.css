@@ -4,17 +4,16 @@
 
 .product .product-container {
     margin: 2rem auto 3rem;
-    margin-top: 130px;
 }
 
 .product .main-info {
     margin-bottom: 1rem;
 }
 
-.botao{
+.product .product-button {
     padding: .6rem;
-    margin: .5rem;
-    width: 8rem;
+
+    max-width: 8rem;
 
     border-radius: .5rem;
     border: none;
@@ -27,10 +26,4 @@
 
 .product .comments-container {
     margin-bottom: 3rem;
-}
-
-.container-principal{
-    max-width: 100%;
-    padding: 0;
-    margin: 0;
 }

@@ -3,7 +3,7 @@ import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Header from './Header';
+import ProductCard from '../ProductCard';
 
 let container = null;
 
@@ -30,24 +30,6 @@ afterEach(() => {
 
 it("Renders without crashing", () => {
     act(() => {
-        render(<Router><Header /></Router>, container);
+        render(<Router><ProductCard /></Router>, container);
     });
-});
-
-it("Should return to home when Logo is clicked", () => {
-    let returnToHomeMock = jest.fn();
-
-    act(() => {
-        render(<Router><Header redirectTest={returnToHomeMock} /></Router>, container);
-    });
-
-    const button = document.getElementsByClassName("search")[0];
-
-    expect(returnToHomeMock).toHaveBeenCalledTimes(0);
-
-    act(() => {
-        button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-    });
-
-    expect(returnToHomeMock).toHaveBeenCalledTimes(1);
 });
