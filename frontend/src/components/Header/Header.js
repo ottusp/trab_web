@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import {DropdownButton, Dropdown} from 'react-bootstrap'
 import ModalEditPerfil from '../../components/ModalEditPerfil/index';
+import CartModal from '../../components/CartModal/CartModal';
 
 import './style.css';
 
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCartRounded';
-import AccountIcon from '@material-ui/icons/AccountCircleRounded';
 import SearchIcon from '@material-ui/icons/Search';
 import MenuIcon from '@material-ui/icons/Menu';
 import logo from './logo.jpg';
@@ -49,7 +49,7 @@ export default function Header(props) {
                         <Dropdown.Item className="item" href="/loginAdmin">Administrador</Dropdown.Item>
                         <Dropdown.Item className="item" data-bs-toggle="modal" data-bs-target={`#item-edit-modal-${props.id}`}>Editar</Dropdown.Item>
                     </DropdownButton>
-                    <button className="btn item carrinho-btn" href="/carrinho" ><ShoppingCartIcon className="shoppingCartIcon"/>Carrinho</button>
+                    <button className="btn item carrinho-btn" data-bs-toggle="modal" data-bs-target="#add-to-cart-modal" href="/carrinho" ><ShoppingCartIcon className="shoppingCartIcon"/>Carrinho</button>
                 </div>
             </div> 
 
@@ -64,6 +64,11 @@ export default function Header(props) {
                     <div className="modal-content">
                         <ModalEditPerfil />
                     </div>
+                </div>
+            </div>
+            <div id="add-to-cart-modal" className="modal fade user-cart-modal" tabindex="-1">
+                <div className="modal-dialog modal-dialog-centered">
+                    <CartModal />
                 </div>
             </div>
         </div>
