@@ -1,8 +1,17 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const path = require('path');
 const cors = require('cors');
+const session = require('express-session');
+const passport = require('passport');
 
-const routes = require('./routes');
+const UserRoutes = require('./routes/User.routes');
+const ProductRoutes = require('./routes/Products.routes');
+const SessionRoutes = require('./routes/Session.routes');
+
+const redis = require('./config/redis.config');
+
+require('dotenv').config();
 
 const app = express();
 
@@ -15,12 +24,42 @@ app.use('/api/static', express.static(path.join(__dirname, 'public')));
 
 app.use(express.json());
 
+
+
+mongoose.connect(`mongodb://localhost:27017/hungrypoints`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
+
+
+
+app.use(session({
+    resave: true,
+    name: "hungrySession",
+    saveUninitialized: true,
+    cookie: {
+        secure: false, 
+        httpOnly: false, 
+        sameSite: 'strict', 
+        maxAge: 3600000 
+    },
+    secret: `teste_secret_mudar_depois`,
+    store: redis.sessionStore,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
+
 app.use((req, res, next) => {
     console.log(req.method, req.path);
     next();
 });
 
-app.use('/api', routes);
+app.use('/api/user', UserRoutes);
+app.use('/api/product', ProductRoutes);
+app.use('/api/session', SessionRoutes);
 
 app.listen(3333, () => {
     console.log('Servidor rodando na porta 3333');
