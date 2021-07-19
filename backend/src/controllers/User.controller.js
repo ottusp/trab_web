@@ -1,7 +1,5 @@
 const User = require('../models/User');
 
-const bCrypt = require('bcrypt');
-
 module.exports = {
     async show (req, res) {
         if (!req.query?.id) {
@@ -37,8 +35,6 @@ module.exports = {
         let phone = req.body?.phone;
         let isAdmin = req.body?.isAdmin;
         let password = req.body?.password;
-
-        password = bCrypt.hashSync(password, 10);
 
         try {
             var user = await User.create({ name, address, email, phone, isAdmin, password });
@@ -123,7 +119,7 @@ module.exports = {
             return cb(null, null);
         }
 
-        if (bCrypt.compareSync(password, user.password)) {
+        if (password === user.password) {
             return cb(null, user);
         }
         else {
