@@ -2,9 +2,13 @@ const session = require('express-session');
 const redis = require('redis');
 const redisStore = require('connect-redis')(session);
 
+require('dotenv').config();
+
+const redisHostname = process.env.REDIS_HOSTNAME || 'localhost';
+
 const sessionClient = redis.createClient({
     db: 0,
-    host: `localhost`,
+    host: redisHostname,
     port: '6379'
 });
 

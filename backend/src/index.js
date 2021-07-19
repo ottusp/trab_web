@@ -13,6 +13,8 @@ const redis = require('./config/redis.config');
 
 require('dotenv').config();
 
+const mongoHostname = process.env.MONGO_HOSTNAME || 'localhost';
+
 const app = express();
 
 app.use(cors({
@@ -26,7 +28,7 @@ app.use(express.json());
 
 
 
-mongoose.connect(`mongodb://localhost:27017/hungrypoints`, {
+mongoose.connect(`mongodb://${mongoHostname}:27017/hungrypoints`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
