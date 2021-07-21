@@ -4,11 +4,11 @@ const ProductSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        maxlength: 50
+        maxlength: 50,
+        unique: true
     },
     picURL: {
         type: String,
-        required: true,
     },
     description: {
         type: String,

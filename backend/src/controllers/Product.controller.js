@@ -48,18 +48,45 @@ module.exports = {
     async store (req, res) {
         let name = req.body?.name;
         let description = req.body?.description;
-        let picURL = req.body?.picURL;
         let price = req.body?.price;
         let inStock = req.body?.inStock;
 
         try {
-            var product = await Product.create({ name, description, picURL, price, inStock });
+            var product = await Product.create({ name, description, price, inStock });
         } catch (err) {
             console.log(err);
             return res.status(500).end();
         }
 
         if (!product) {
+            return res.status(500).end();
+        }
+
+        return res.status(200).json(product);
+    },
+
+    async updateImg (req, res) {
+        if (!req.file) {
+            return res.status(200).end();
+        }
+
+        try {
+            var product = await Product.findById(req.params?.id);
+        } catch (err) {
+            console.log(err);
+            return res.status(500).end();
+        }
+
+        if (!product) {
+            return res.status(404).end();
+        }
+
+        product.picURL = `http://localhost:3333/api/static/${req.file?.filename}`;
+
+        try {
+            await product.save();
+        } catch (err) {
+            console.log(err);
             return res.status(500).end();
         }
 
@@ -83,13 +110,11 @@ module.exports = {
 
         let name = req.body?.name;
         let description = req.body?.description;
-        let picURL = req.body?.picURL;
         let price = req.body?.price;
         let inStock = req.body?.inStock;
         
         product.name = name;
         product.description = description;
-        product.picURL = picURL;
         product.price = price;
         product.inStock = inStock;
 
