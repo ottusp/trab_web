@@ -9,20 +9,29 @@ import './style.css';
 
 import AdminItemModal from '../../components/AdminItemModal/index';
 
-import sushi from '../../assets/img/sushi.jpg';
+import api from '../../services/api';
 
 
 export default function AdminItemOverview (props) {
     const name = props.info?.name;
     const price = parseFloat(props.info?.price).toFixed(2);
     const inStock = props.info?.inStock;
-    const img = props.info?.img;
+    const img = props.info?.picURL;
     const history = useHistory();
 
-    function handleDelete() {
-        alert('Deletado!');
+    async function handleDelete() {
+        // alert('Deletado!');
         if (props.handleDeleteMock) props.handleDeleteMock();
-        // history.go(0);
+        console.log(props)
+        
+        try {
+            var response = await api.delete(`/product/${props.id}`);
+        } catch (err) {
+            console.log(err);
+            return;
+        }
+
+        history.go(0);
     }
 
     return (

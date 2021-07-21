@@ -31,7 +31,8 @@
     align-items: center;
     justify-content: center;
 
-    margin: auto 10% auto auto;
+    margin: auto 10% auto auto!important;
+    padding: 1%!important;
 }
 
 .admin-page-new-product-btn:hover {
