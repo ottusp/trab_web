@@ -1,5 +1,5 @@
-import React from 'react';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useEffect, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import bootstrap from 'bootstrap';
 
 import './style.css';
@@ -10,7 +10,21 @@ import CommentCard from "../../components/CommentCard/CommentCard"
 import Footer from '../../components/Footer';
 import CartModal from '../../components/CartModal/CartModal';
 
+import api from '../../services/api';
+
 export default function Product() {
+    const [comments, setComments] = useState([]);
+    
+    useEffect(async () => {
+        try {
+            const response = await api.get('/comment/');
+            console.log('response: ', response.data);
+
+            setComments(response.data);
+        } catch (err) {
+            console.log('erro no get: ', err);
+        }
+    }, []);
 
     const product = {
         _id: 0,
@@ -52,7 +66,15 @@ export default function Product() {
                         </div>
 
                         <div className="comments-container">
-                            <CommentCard 
+                            {
+                                comments.map((item) => (
+                                    <div className="comment-item">
+                                        <CommentCard userName={item.user.name} rating={item.rating} content={item.content} />
+                                    </div>
+                                ))
+                            }
+
+                            {/* <CommentCard 
                                 userName="Lucas Romero"
                                 rating = "0.3"
                                 content = "Eu amo esse sushi, acho ele muito tope. Uma vez, eu pedi ele 10 vezes na minha casa no mesmo mês, e não me arrependo. Nota 10!"
@@ -62,7 +84,7 @@ export default function Product() {
                                 userName="Larissa Freire"
                                 rating="4.9"
                                 content="Sinceramente, fiquei fascinada com esse sushi. Provavelmente a melhor comida oriental que já comi."
-                            />
+                            /> */}
                         </div>
 
                         <div className="buttons-container d-flex justify-content-md-evenly">
