@@ -1,29 +1,38 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import api from '../../services/api';
 import './style.css';
 
 import Header from '../../components/Header/Header';
 import Carrossel from '../../components/Carrossel/Carrossel';
-import ShowProducts from '../../components/ShowProducts/index';
+//import ShowProducts from '../../components/ShowProducts/index';
+import Card from '../../components/Card/index';
 import Footer from '../../components/Footer/index';
 
-import sushi from './sushi.jpg';
-import tapioca from './tapioca.jpg';
-import cupcake from './cupcake.jpg';
-import macarrao from './macarrao.jpg';
-import caldo from './caldo.png';
-import pizza from './pizza.jpg';
-import cookie from './cookie.jpg';
-import salada from './salada.jpg';
-import espetinho from './espetinho.jpg';
-
 export default function Principal(){
+    const [products, setProducts] = useState([]);
+    
+    useEffect(async () => {
+        try {
+            const res = await api.get('/product/');
+            console.log('response: ', res.data);
+
+            setProducts(res.data);
+        } catch (e) {
+            console.log('erro no get: ', e);
+        }
+    }, []);
+
     return (
         <div className="container container-principal">
             <Header />
             <Carrossel />
-            <ShowProducts 
+            {
+                products.map((item) => (
+                    <Card id={item._id} info={item} />
+                ))
+            }
+            {/* <ShowProducts 
                 img1={cookie}
                 title1="Cookies - Loja X"
                 description1="Dois cookies de gotas de chocolate, muito crocantes feitos em esetilo americano. Feito com farinha de trigo integral, sem glúten."
@@ -68,7 +77,7 @@ export default function Principal(){
                 title9="Salada - Loja Z"
                 description9="Alface e tomate cobertos com mussarela e croutons, acompanhada de molho manjericão à parte."
                 price9="17,50"
-            />
+            /> */}
             <Footer />
         </div>
     );
