@@ -9,7 +9,6 @@ export default function Card(props) {
     const price = parseFloat(props.info?.price).toFixed(2);
     const description = props.info?.description;
     const img = props.info?.picURL;
-    const history = useHistory();
 
     return (
         <div className="card">

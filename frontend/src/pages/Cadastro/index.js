@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
@@ -14,6 +14,7 @@ export default function Cadastro(){
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [password, setPassword] = useState("");
+    let history = useHistory();
 
 
     async function handleSubmit() {        

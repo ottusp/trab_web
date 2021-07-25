@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './style.css';
 
 import Header from '../../components/Header/Header';
+import Card from '../../components/Card/index';
 import ShowProducts from '../../components/ShowProducts/index';
 import Footer from '../../components/Footer/index';
-
-import sushi from './sushi.jpg';
+import api from '../../services/api';
 
 export default function Search(){
+    const [products, setProducts] = useState([]);
     const location = useLocation();
     const prod = location?.state?.detail;
 
     useEffect(async () => {
         try {
-            const res = await api.get('/product/');
+            const res = await api.get(`/product/${prod}`);
             console.log('response: ', res.data);
 
             setProducts(res.data);
