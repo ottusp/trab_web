@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// Create a schema for products (some properties are self explanatory)
 const ProductSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -7,7 +8,7 @@ const ProductSchema = new mongoose.Schema({
         maxlength: 50,
         unique: true
     },
-    picURL: {
+    picURL: {   //The URL from where the frontend can get the object image
         type: String,
     },
     description: {
@@ -33,4 +34,5 @@ const ProductSchema = new mongoose.Schema({
     }
 });
 
+// Link the product schema to a model
 module.exports = mongoose.model('Product', ProductSchema);

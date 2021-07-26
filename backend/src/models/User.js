@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// Create a schema for users (some properties are self explanatory)
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -14,11 +15,12 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
         validate: {
-            validator: function (v) {
+            validator: function (v) { // Validates the user's email against the following regex
                 return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(v);
             },
             message: (props) => `${props.value} is not a valid email`
-        }
+        },
+        unique: true,
     },
     phone: {
         type: Number,
@@ -36,4 +38,5 @@ const UserSchema = new mongoose.Schema({
     }
 });
 
+// Link the user schema to a model
 module.exports = mongoose.model('User', UserSchema);

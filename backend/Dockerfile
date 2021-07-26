@@ -1,3 +1,4 @@
+# Creates image for backend
 FROM node
 
 WORKDIR /usr/src/app
