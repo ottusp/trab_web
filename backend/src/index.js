@@ -9,6 +9,7 @@ const UserRoutes = require('./routes/User.routes');
 const ProductRoutes = require('./routes/Products.routes');
 const SessionRoutes = require('./routes/Session.routes');
 const CommentRoutes = require('./routes/Comment.routes');
+const CartRoutes = require('./routes/Cart.routes');
 
 const redis = require('./config/redis.config');
 
@@ -63,7 +64,8 @@ app.use('/api/user', UserRoutes);
 app.use('/api/product', ProductRoutes);
 app.use('/api/session', SessionRoutes);
 app.use('/api/comment', CommentRoutes);
+app.use('/api/cart', CartRoutes);
 
 app.listen(3333, () => {
     console.log('Servidor rodando na porta 3333');
-})
+});
