@@ -1,23 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './style.css';
 
 import Header from '../../components/Header/Header';
+import Card from '../../components/Card/index';
 import ShowProducts from '../../components/ShowProducts/index';
 import Footer from '../../components/Footer/index';
-
-import sushi from './sushi.jpg';
+import api from '../../services/api';
 
 export default function Search(){
+    const [products, setProducts] = useState([]);
     const location = useLocation();
+    const prod = location?.state?.detail;
+
+    useEffect(async () => {
+        try {
+            const res = await api.get(`/product/${prod}`);
+            console.log('response: ', res.data);
+
+            setProducts(res.data);
+        } catch (e) {
+            console.log('erro no get: ', e);
+        }
+    }, []);
+
 
     return (
         <div className="container-principal">
             <Header />
-            <div className="container container-title">Resultados para a pesquisa de <b>{location?.state?.detail}</b>:</div>
-            <ShowProducts 
+            <div className="container container-title">Resultados para a pesquisa de <b>{prod}</b>:</div>
+            {
+                products.map((item) => (
+                    <Card id={item._id} info={item} />
+                ))
+            }
+            {/* <ShowProducts 
                 img1={sushi}
                 title1="Sushi"
                 description1="4 skin maki + 4 kani maki + 4 tortinha cheese + 4 shake garlic + 4 niguiri salmão + 4 niguiri kani + 6 hot filadélfia."
@@ -62,7 +81,7 @@ export default function Search(){
                 title9="Sushi"
                 description9="4 skin maki + 4 kani maki + 4 tortinha cheese + 4 shake garlic + 4 niguiri salmão + 4 niguiri kani + 6 hot filadélfia."
                 price9="15,90"
-            />
+            /> */}
             <Footer />
         </div>
     );

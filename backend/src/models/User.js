@@ -23,9 +23,9 @@ const UserSchema = new mongoose.Schema({
         unique: true,
     },
     phone: {
-        type: Number,
+        type: String,
         required: true,
-        max: 100000000000000
+        maxlength: 20
     },
     isAdmin: {
         type: Boolean,
@@ -35,6 +35,10 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
+    },
+    cart: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Cart'
     }
 });
 

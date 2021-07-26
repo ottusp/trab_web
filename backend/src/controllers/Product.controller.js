@@ -62,7 +62,7 @@ module.exports = {
             return res.status(500).end();
         }
 
-        return res.status(200).json(product);
+        return res.status(201).json(product);
     },
 
     async updateImg (req, res) {
