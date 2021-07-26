@@ -24,13 +24,13 @@ module.exports = function (passport) {
         passwordField: 'password'
     },
         (email, password, done) => {
-            // Checks if the the password sent in request matches with the password stored in the database for the user related to that email
             UserController.verifyLogin(email, password, (err, user) => {
+                console.log("user: ", user);
                 if (err) {
                     console.log(err);
                     return done(err, null);
                 }
-
+                
                 else if (!user) {
                     return done(null, null);
                 }
@@ -38,6 +38,7 @@ module.exports = function (passport) {
                 else {
                     return done(null, user); 
                 }
+
             });
         }
     ));

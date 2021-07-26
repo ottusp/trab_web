@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
 
 import './style.css';
@@ -10,11 +9,10 @@ export default function Login(){
     const [btnLabel, setBtnLabel] = useState("ENTRAR");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    let history = useHistory();
 
     async function handleSubmit() {        
         try {
-            var response = await api.post('/user/', {
+            await api.post('/session/login', {
                 email,
                 password
             }, {
@@ -25,8 +23,6 @@ export default function Login(){
             console.log(e);
             return;
         }
-
-        history.go(0);
     }
 
     return (

@@ -18,8 +18,8 @@ export default function Routes() {
             <Switch>
                 <Route path="/" exact component={Principal} />
                 <Route path="/admin/home" exact component={AdminDashboard} />
-                <Route path="/product" exact component={Product} />
-                <Route path="/search" exact component={Search} />
+                <Route path="/product/:id" exact component={Product} />
+                <Route path="/search/:name" exact component={Search} />
                 <Route path="/login" exact component={Login} />
                 <Route path="/cadastro" exact component={Cadastro} />
                 <Route path="/cadastroAdmin" exact component={CadastroAdmin} />

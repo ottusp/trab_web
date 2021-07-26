@@ -14,6 +14,7 @@ import logo from './logo.jpg';
 
 export default function Header(props) {
     const [showLinks, setShowLinks] = useState(false);
+    const [value, setValue] = useState("");
     const history = useHistory();
 
     const redirect = () => {
@@ -21,15 +22,9 @@ export default function Header(props) {
             props.redirectTest();
         }
         
-        var input = document.querySelector("#busca");
-        if(input.value !== ""){
-            history.push({
-                pathname: '/search',
-                state: {
-                    detail: input.value
-                }
-            });
-        }
+        history.push({
+            pathname:`/search/${value}`,
+        });
     }
 
     return (
@@ -55,8 +50,8 @@ export default function Header(props) {
 
             <div className="rightSide">
                 <form id> 
-                    <input id="busca" type="text" placeholder="Busque seu lanche" required></input>
-                    <button className="search" onClick={redirect} ><SearchIcon /></button>
+                    <input id="busca" type="text" placeholder="Busque seu lanche" required value={value} onChange={e => setValue(e.target.value)}></input>
+                    <button className="search" onClick={redirect}><SearchIcon /></button>
                 </form>
             </div>
             <div id={`item-edit-modal-${props.id}`} className="modal fade admin-edit-modal" tabindex="-1">
