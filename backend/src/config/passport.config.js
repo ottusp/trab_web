@@ -20,12 +20,13 @@ module.exports = function (passport) {
         passwordField: 'password'
     },
         (email, password, done) => {
-            UserController.verify(email, password, (err, user) => {
+            UserController.verifyLogin(email, password, (err, user) => {
+                console.log("user: ", user);
                 if (err) {
                     console.log(err);
                     return done(err, null);
                 }
-
+                
                 else if (!user) {
                     return done(null, null);
                 }
@@ -33,6 +34,7 @@ module.exports = function (passport) {
                 else {
                     return done(null, user); 
                 }
+
             });
         }
     ));
