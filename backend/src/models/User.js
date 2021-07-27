@@ -36,7 +36,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    cart: {
+    cart: { //the user's cart that stores the products the user is currently willing to buy
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Cart'
     }
