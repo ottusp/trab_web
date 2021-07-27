@@ -1,10 +1,29 @@
-import React from 'react';
+import React, {useState }  from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-
+import api from '../../services/api';
 import './style.css';
 
+//Login Page to start a new session for Admins
 export default function LoginAdmin(){
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    //Create a new session for admin on server
+    async function handleSubmit() {        
+        try {
+            await api.post('/session/login', {
+                email,
+                password
+            }, {
+                withCredentials: true,
+            });
+        } catch (e) {
+            alert('Erro ao logar adminitrador');
+            console.log(e);
+            return;
+        }
+    }
 
     return (
         <div className="container container-pagina" >
@@ -18,15 +37,15 @@ export default function LoginAdmin(){
                         <h2 className="title">Login</h2>
                         <p>[Administrador]</p>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="Email" />
+                            <input type="email" class="form-control" id="floatingInput" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)}/>
                             <label for="floatingInput">Email</label>
                         </div>
                         <div class="form-floating">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Senha" />
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Senha" value={password} onChange={e => setPassword(e.target.value)}/>
                             <label for="floatingPassword">Senha</label>
                         </div>
                         <Link to = "/">
-                            <button id="btn" type="button" className="btn btn-danger">Entrar</button>
+                            <button id="btn" type="button" className="btn btn-danger" onClick={handleSubmit}>Entrar</button>
                         </Link>
                         <a id="link" href="/cadastro" title="Não tenho cadastro">Não tenho cadastro</a>
                         <a id="link" href="/" title="voltar">Voltar</a>

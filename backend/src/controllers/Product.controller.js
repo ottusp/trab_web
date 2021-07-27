@@ -1,11 +1,17 @@
 const Product = require('../models/Product');
 
 module.exports = {
+    // shows products in database
     async show (req, res) {
+<<<<<<< HEAD
         if (!req.query?.id && !req.query?.name) {
+=======
+        if (!req.query?.id && !req.query?.name) { // if no id or name is passed through query params, it shows all products in database
+>>>>>>> fc991d01e8ca91a969895224887a47b7ea6ed020
             return module.exports.showAll(req, res);
         }
 
+        // if a id is passed, it shows a product based on id
         if (req.query.id) {
             try {
                 var product = await Product.findById(req.query?.id);
@@ -17,7 +23,7 @@ module.exports = {
                 return res.status(500).end();
             }
         }
-        else {
+        else {  // else it shows a product by name using regex. returns all products where the name passed is a substring of the real name
             try {
                 var product = await Product.find({ name: { "$regex": req.query.name, "$options": "i" } });
             } catch (err) {
@@ -34,6 +40,7 @@ module.exports = {
         return res.status(200).json(product);
     },
 
+    // shows all products in database
     async showAll (req, res) {
         try {
             var products = await Product.find({});
@@ -45,6 +52,7 @@ module.exports = {
         return res.status(200).json(products);
     },
 
+    // creates a product in database
     async store (req, res) {
         let name = req.body?.name;
         let description = req.body?.description;
@@ -65,6 +73,7 @@ module.exports = {
         return res.status(201).json(product);
     },
 
+    // updates the image related to a product
     async updateImg (req, res) {
         if (!req.file) {
             return res.status(200).end();
@@ -93,6 +102,7 @@ module.exports = {
         return res.status(200).end();
     },
 
+    // updates all the info of a product but its image
     async update (req, res) {
         if (!req.params?.id) {
             return res.status(400).end();
@@ -128,6 +138,7 @@ module.exports = {
         return res.status(200).end();
     },
 
+    // deletes a product from the database
     async destroy (req, res) {
         if (!req.params?.id) {
             return res.status(400).end();
@@ -146,6 +157,7 @@ module.exports = {
         return res.status(200).end();
     },
 
+    // "sells" a product. it subtracts a quantity from the "inStock" property and sums it to "sold" property
     async sell (req, res) {
         if (!req.params?.id) {
             return res.status(400).end();
@@ -158,7 +170,7 @@ module.exports = {
         }
 
         try {
-            var product = await Product.findById(req.params.id);
+            var product = await Product.findById(req.params.id);    // gets the product
         } catch (err) {
             if (err.kind == "ObjectId") {
                 return res.status(404).end();
@@ -171,14 +183,17 @@ module.exports = {
             return res.status(404).end();
         }
 
+        // "sells" it
         product.inStock -= quantity;
         product.sold += quantity;
         
         try {
-            await product.save();
+            await product.save();   // saves the operation
         } catch (err) {
             console.log(err);
             return res.status(500).end();
         }
+
+        return res.status(200).end();
     }
 }

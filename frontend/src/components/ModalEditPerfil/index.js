@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import api from '../../services/api';
 
-export default function ModalEditPerfil () {
+//modal that allows editions in perfil from users
+export default function ModalEditPerfil (props) {
     const [btnLabel, setBtnLabel] = useState("Editar");
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -14,9 +14,10 @@ export default function ModalEditPerfil () {
     const [password, setPassword] = useState("");
     let history = useHistory();
 
+    //update changes on server
     async function handleSubmit() {
         try {
-            var response = await api.put(`/user/`, {
+            var response = await api.put(`/user/?id=${props.id}`, {
                 name,
                 email,
                 phone,

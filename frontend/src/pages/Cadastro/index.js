@@ -1,22 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
-
 import './style.css';
-
 import api from '../../services/api';
 
+//page for registering new users
 export default function Cadastro(){
-    const [btnLabel, setBtnLabel] = useState("CADASTRAR");
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [password, setPassword] = useState("");
-    let history = useHistory();
 
-
+    //create a new user on server
     async function handleSubmit() {        
         try {
             var response = await api.post('/user/', {
@@ -33,8 +29,6 @@ export default function Cadastro(){
             console.log(e);
             return;
         }
-
-        history.go(0);
     }
 
     return (
@@ -68,7 +62,7 @@ export default function Cadastro(){
                             <label for="floatingPassword">Senha</label>
                         </div>
                         <Link to = "/">
-                            <button id="btn" type="button" className="btn btn-danger" onClick={handleSubmit}>{btnLabel}</button>
+                            <button id="btn" type="button" className="btn btn-danger" onClick={handleSubmit}>CADASTRAR</button>
                         </Link>
                         <a id="link" href="/login" title="Não tenho cadastro">Já tenho cadastro</a>
                         
