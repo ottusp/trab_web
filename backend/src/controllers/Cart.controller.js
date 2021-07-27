@@ -1,4 +1,5 @@
-const Cart = require('../models/Cart');
+const Cart = require('../models/Cart/Cart');
+const CartItem = require('../models/Cart/CartItem');
 const User = require('../models/User');
 const Product = require('../models/Product');
 
@@ -25,7 +26,7 @@ const show = async (req, res) => {
  * Params: 
  *  userId: the ID of the corresponding User
  */
-const store = async (req, res) => {
+const addItem = async (req, res) => {
     const userId = req.params["userId"];
     if (!userId) {
         return res.status(400).end();
@@ -39,14 +40,19 @@ const store = async (req, res) => {
         return res.status(500).end();
     }
 
+    console.log("Produto: ", product);
     console.log("Puxando o usuario do DB");
 
     const user = await User.findById(userId).populate('cart');
     if(!user.cart) {
+        console.log('Criando novo carrinho');
         user.cart = new Cart({});
     }
 
     const quantity = req.body?.quantity;
+    const cartItem = new CartItem({});
+    cartItem.product = product._id;
+
     user.cart.products.push({
         product: product._id,
         quantity: quantity
@@ -57,5 +63,5 @@ const store = async (req, res) => {
 
 module.exports = {
     show,
-    store
+    addItem
 };
