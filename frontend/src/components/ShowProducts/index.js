@@ -1,10 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import Card from '../../components/Card/index';
-
 import './style.css';
-
+//organise the received products from server in rows of three columns
 export default function ShowProducts(props){
     return (
             <div className="container container-div">

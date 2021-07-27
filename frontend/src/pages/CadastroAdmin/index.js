@@ -1,10 +1,10 @@
 import React, {useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-
 import './style.css';
 import api from '../../services/api';
 
+//page for registering new Admin users
 export default function CadastroAdmin(){
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -13,6 +13,7 @@ export default function CadastroAdmin(){
     const [password, setPassword] = useState("");
     const isAdmin = true;
 
+    //create a new Admin on server
     async function handleSubmit() {        
         try {
             var response = await api.post('/user/admin/', {

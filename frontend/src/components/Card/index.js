@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import './style.css';
 
+//card with infos about products
 export default function Card(props) {
 
     const name = props.info?.name;

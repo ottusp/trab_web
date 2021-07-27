@@ -2,14 +2,14 @@ import React, {useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
-
 import './style.css';
 
+//Login Page to start a new session for user
 export default function Login(){
-    const [btnLabel, setBtnLabel] = useState("ENTRAR");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    //Create a new session on server
     async function handleSubmit() {        
         try {
             await api.post('/session/login', {
@@ -44,7 +44,7 @@ export default function Login(){
                             <label for="floatingPassword">Senha</label>
                         </div>
                         <Link to = "/">
-                            <button id="btn" type="button" className="btn btn-danger" onClick={handleSubmit}>{btnLabel}</button>
+                            <button id="btn" type="button" className="btn btn-danger" onClick={handleSubmit}>ENTRAR</button>
                         </Link>
                         <a id="link" href="/cadastro" title="Não tenho cadastro">Não tenho cadastro</a>
                         <a id="link" href="/" title="voltar">Voltar</a>

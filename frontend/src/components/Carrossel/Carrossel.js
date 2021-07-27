@@ -2,11 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 import './style.css';
-// import 'bootstrap/js/src/carousel'
-// import 'bootstrap/js/src/util'
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import {Carousel} from 'react-bootstrap'
 
+//Carroussel that shows some products
 export default function Carroussel(props) {
   return (
   <div className="container container-carroussel">

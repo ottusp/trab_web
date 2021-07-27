@@ -4,19 +4,19 @@ import { useHistory } from 'react-router-dom';
 import {DropdownButton, Dropdown} from 'react-bootstrap'
 import ModalEditPerfil from '../../components/ModalEditPerfil/index';
 import CartModal from '../../components/CartModal/CartModal';
-
 import './style.css';
-
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCartRounded';
 import SearchIcon from '@material-ui/icons/Search';
 import MenuIcon from '@material-ui/icons/Menu';
 import logo from './logo.jpg';
 
+//Navbar 
 export default function Header(props) {
-    const [showLinks, setShowLinks] = useState(false);
+    const [showLinks, setShowLinks] = useState(false);//hide some links based on page width
     const [value, setValue] = useState("");
     const history = useHistory();
 
+    //redirect to the search page
     const redirect = () => {
         if (props?.redirectTest) {
             props.redirectTest();
@@ -42,6 +42,7 @@ export default function Header(props) {
                     <DropdownButton id="dropdown-basic-button" title="Entrar">
                         <Dropdown.Item className="item" href="/login">Usuário</Dropdown.Item>
                         <Dropdown.Item className="item" href="/loginAdmin">Administrador</Dropdown.Item>
+                        <Dropdown.Item className="item" href="/">Logout</Dropdown.Item>
                         <Dropdown.Item className="item" data-bs-toggle="modal" data-bs-target={`#item-edit-modal-${props.id}`}>Editar</Dropdown.Item>
                     </DropdownButton>
                     <button className="btn item carrinho-btn" data-bs-toggle="modal" data-bs-target="#add-to-cart-modal" href="/carrinho" ><ShoppingCartIcon className="shoppingCartIcon"/>Carrinho</button>

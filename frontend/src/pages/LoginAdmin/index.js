@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import './style.css';
 
+//Login Page to start a new session for Admins
 export default function LoginAdmin(){
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    //Create a new session for admin on server
     async function handleSubmit() {        
         try {
             await api.post('/session/login', {

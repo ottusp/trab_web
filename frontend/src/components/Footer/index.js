@@ -1,8 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import './style.css';
 
+//Footer with basic informations
 export default function Footer(props) {
 
     return (

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+//Schema for comments
 const CommentSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,

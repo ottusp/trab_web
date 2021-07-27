@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import api from '../../services/api';
 import './style.css';
-
 import Header from '../../components/Header/Header';
 import Carrossel from '../../components/Carrossel/Carrossel';
 import Footer from '../../components/Footer/index';
@@ -11,8 +10,8 @@ import ShowProducts from '../../components/ShowProducts';
 export default function Principal(){
     const [products, setProducts] = useState([]);
     const [carrosselProduct, setCarrosselProduct] = useState([]);
-    //const ids = [products[0]._id];
     
+    //method get to pick all products registred on server
     useEffect(async () => {
         try {
             var res = await api.get('/product/');
@@ -20,6 +19,7 @@ export default function Principal(){
         } catch (e) {
             console.log('erro no get: ', e);
         }
+        //passes server products every three to the component showProducts
         var tempArray = [];
         while(res.data.length!=0){
             tempArray.push(res.data.splice(0,3));
@@ -27,7 +27,7 @@ export default function Principal(){
         setProducts (tempArray);
     }, []);
     
-
+    //method get to pick products to show on Carroussel
     useEffect(async () => {
         try {
             var res = await api.get(`/product/?id=${products}`);

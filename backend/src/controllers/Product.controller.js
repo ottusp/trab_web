@@ -2,7 +2,6 @@ const Product = require('../models/Product');
 
 module.exports = {
     async show (req, res) {
-        console.log("req.query: ", req.query);
         if (!req.query?.id && !req.query?.name) {
             return module.exports.showAll(req, res);
         }
