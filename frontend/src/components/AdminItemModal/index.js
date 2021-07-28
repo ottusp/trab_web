@@ -37,7 +37,8 @@ export default function AdminItemModal (props) {
     // form submission handler
     async function handleSubmit() {
         if(props.handleSubmitMock) props.handleSubmitMock();
-        console.log(process.env.PORT);
+        console.log('port: ', process.env.PORT);
+        console.log('env: ' ,process.env.NODE_ENV);
         // if the component is being used for creation, it creates a product according to the info filled in forms
         if (props.type === "create") {
             try {
