@@ -50,12 +50,14 @@ Todos os códigos dos testes feitos se encontram anexados em arquivos do tipo "_
 
 Caso queira testar é só executar o comando: npm test, no próprio terminal 
 
-Ainda não decidimos sobre as ferramentas de teste para o back-end
+Os testes para o backend foram realizados usando o PostMan e os arquivos com os testes se encontram na pasta PostMan_Backend com seus respectivos resultados.
 
 ## Resultados dos testes
 Todos os testes realizados para o frontend deram resultado positivo, como ilustra o print abaixo mostrando a realização de 32 testes em 13 pastas distintas correspondentes aos componentes e páginas do app.
 
 <img src="img/prototype/results.jpg" width="300px">
+
+Para visualizar os resultados dos testes para o backend acesse o diretório PostMan_Backend onde se encontram as requisições e respostas para as funcionalidades do backend. Todos apresentaram resultados bem sucedidos com retornos esperados das requisições get, post, put e delete para a api.
 
 ## Como rodar o projeto
 Para rodar o projeto basta baixar esse repositório (ou cloná-lo na sua máquina).
