@@ -62,6 +62,8 @@ Para visualizar os resultados dos testes para o backend acesse o diretório Post
 ## Como rodar o projeto
 Para rodar o projeto basta baixar esse repositório (ou cloná-lo na sua máquina).
 
+Você pode baixar o yarn e o npm com seu gerenciador de pacotes padrão.
+
 Para iniciar a aplicação vá ao diretório principal do projeto, o trab_web e de lá acesse a pasta backend com o comando "cd backend"
 
 Para inciar o Backend basta rodar o comendo "sudo yarn dev"
@@ -75,8 +77,6 @@ Se quiser acessar alguma página manualmente digite no broser seu caminho:
 Exemplo para a página de login: http://localhost:3000/login
 
 Você pode encontrar o caminho para todas as páginas acessando trab_web/frontend/src/routes.js
-
-Você pode baixar o yarn e o npm com seu gerenciador de pacotes padrão.
 
 O protótipo do deploy se encontra no link: [deploy](https://hungrypoints.herokuapp.com/), mas o deploy no heroku está desatualizado em relção ao que se encontra aqui no github.
 
