@@ -86,7 +86,7 @@ module.exports = {
             return res.status(404).end();
         }
 
-        product.picURL = `http://localhost:${80}/api/static/${req.file?.filename}`;
+        product.picURL = `http://localhost:${process.env.PORT || 3333}/api/static/${req.file?.filename}`;
 
         try {
             await product.save();
