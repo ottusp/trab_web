@@ -53,28 +53,24 @@ Caso queira testar é só executar o comando: npm test, no próprio terminal
 Ainda não decidimos sobre as ferramentas de teste para o back-end
 
 ## Resultados dos testes
-Todos os testes realizados deram resultado positivo, como ilustra o print abaixo mostrando a realização de 32 testes em 13 pastas distintas correspondentes aos componentes e páginas do app.
+Todos os testes realizados para o frontend deram resultado positivo, como ilustra o print abaixo mostrando a realização de 32 testes em 13 pastas distintas correspondentes aos componentes e páginas do app.
 
 <img src="img/prototype/results.jpg" width="300px">
 
 ## Como rodar o projeto
 Para rodar o projeto basta baixar esse repositório (ou cloná-lo na sua máquina).
 
-Para rodá-lo utilizando o sevidor do react você pode utilizar o yarn ou o npm, ambos são gerenciadores de pacotes para ambiente Node.js do JavaScript.
+Para facilitar a instalação de todos os pacotes do frontend e backend, em suas respectivas versões requeridas, pode-se rodar o docker para executar a aplicação.
 
-Após instalados com seu gerenciador de pacote padrão execute no terminal no diretório trab_web/frontend o seguinte comando para baixar as dependências do projeto:
-yarn install 
+Antes de tudo é recomendado atualizar seu sistema. Em seguida, instale com o seu gerenciador de pacote padrão o docker e o docker-compose.
 
-ou se estiver utilizando o npm:
-npm install
+Para iniciá-lo vá ao diretório principal do projeto, o trab_web, e execute o comando "sudo docker-compose up"
 
-Para iniciar o seridor basta usar o comando abaixo:
-yarn start 
+Para outras dúvidas consulte o link: docker-docs [nesse link](https://docs.docker.com/get-docker/), docker-docs.
 
-ou se estiver utilizando o npm:
-npm start
+Ele vai baixar o banco de dados Redis, o MongoDB, o Nodejs e outras dependências, e por isso pode levar alguns minutos até a inicialização completa na primeira vez que executar o docker.
 
-Esse comando vai abrir no seu browser automaticamente uma guia no localhost da porta padrão 3000, e assim você poderá ver a aplicação em execução.
+Após isso basta abrir no seu browser uma guia no localhost da porta padrão 3000, e assim você poderá ver a aplicação em execução.
 Se quiser acessar alguma página manualmente digite no broser seu caminho:
 Exemplo para a página de login: http://localhost:3000/login
 
