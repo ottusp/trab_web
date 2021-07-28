@@ -54,7 +54,6 @@ export default function Product(props) {
         const userId = localStorage.getItem("userId");
         const productId = product._id;
 
-<<<<<<< HEAD
         if(!userId) {
             alert("Você não está logado!");
             return;
@@ -69,17 +68,6 @@ export default function Product(props) {
         } catch(err) {
             console.log("Erro ao adicionar item ao carrinho: ", err);
         }
-=======
-        // try {
-        //     var response = await api.post(`/cart/${userId}`, {
-        //         productId: productId,
-        //         productQuantity: 1
-        //     } );
-        // } catch(err) {
-        //     console.log("Erro ao adicionar item ao carrinho: ", err);
-        // }
-        // console.log(response);
->>>>>>> 78a063bf4e5c7bea18c419f9a9e3dcdaf7119e6c
         // setOrders(response.data.products)
     }
 
