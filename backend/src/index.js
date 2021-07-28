@@ -51,7 +51,7 @@ app.use(session({
     },
     secret: 'secret_topper',
     store: MongoStore.create({
-        mongoUrl: `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@cluster0.fbolq.mongodb.net/hungryPoints?retryWrites=true&w=majority`,
+        mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@cluster0.fbolq.mongodb.net/hungryPoints?retryWrites=true&w=majority`,
         ttl: 60*60*4,
         autoRemove: 'native'
     }),
