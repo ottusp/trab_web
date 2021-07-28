@@ -12,6 +12,7 @@ import Cadastro from './pages/Cadastro/index';
 import CadastroAdmin from './pages/CadastroAdmin/index';
 
 
+// Page routes
 export default function Routes() {
     return (
         <BrowserRouter>
