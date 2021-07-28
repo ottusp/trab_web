@@ -4,6 +4,7 @@ const path = require('path');
 const cors = require('cors');
 const session = require('express-session');
 const passport = require('passport');
+const MongoStore = require('connect-mongo');
 
 const UserRoutes = require('./routes/User.routes');
 const ProductRoutes = require('./routes/Products.routes');
@@ -11,7 +12,6 @@ const SessionRoutes = require('./routes/Session.routes');
 const CommentRoutes = require('./routes/Comment.routes');
 const CartRoutes = require('./routes/Cart.routes');
 
-const redis = require('./config/redis.config');
 
 require('dotenv').config();
 
@@ -31,7 +31,7 @@ app.use('/api/static', express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
 // Connect to mongodb database
-mongoose.connect(`mongodb://${mongoHostname}:27017/hungrypoints`, {
+mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@cluster0.fbolq.mongodb.net/hungryPoints?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
@@ -48,8 +48,12 @@ app.use(session({
         sameSite: 'strict', 
         maxAge: 3600000 
     },
-    secret: `teste_secret_mudar_depois`,
-    store: redis.sessionStore,
+    secret: 'secret_topper',
+    store: MongoStore.create({
+        mongoUrl: `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@cluster0.fbolq.mongodb.net/hungryPoints?retryWrites=true&w=majority`,
+        ttl: 60*60*4,
+        autoRemove: 'native'
+    }),
 }));
 
 // Initialize passport with sessions
@@ -70,7 +74,16 @@ app.use('/api/session', SessionRoutes);
 app.use('/api/comment', CommentRoutes);
 app.use('/api/cart', CartRoutes);
 
+console.log(path.join(__dirname))
+app.use(express.static(path.join(__dirname, '..', 'build')));
+
+app.use((req, res, next) => {
+    res.sendFile(path.join(__dirname, "..", "build", "index.html"));
+});
+
+port = process.env.PORT || 3333;
+
 // Start server
-app.listen(3333, () => {
-    console.log('Servidor rodando na porta 3333');
+app.listen(port, () => {
+    console.log(`Servidor rodando na porta ${port}`);
 });

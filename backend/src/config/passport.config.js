@@ -25,7 +25,6 @@ module.exports = function (passport) {
     },
         (email, password, done) => {
             UserController.verifyLogin(email, password, (err, user) => {
-                console.log("user: ", user);
                 if (err) {
                     console.log(err);
                     return done(err, null);
