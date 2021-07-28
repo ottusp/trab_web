@@ -82,7 +82,7 @@ app.use((req, res, next) => {
     res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
 
-port = 80;
+port = process.env.PORT || 80;
 
 // Start server
 app.listen(port, () => {
