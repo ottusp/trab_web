@@ -3,7 +3,8 @@ import dotenv from 'dotenv';
 
 // creates the api to send requests to the backend
 const api = axios.create({
-    baseURL: `http://localhost:${process.env.PORT || 3333}/api`,
+    baseURL: `/teste`,
+    // baseURL: `http://localhost:${process.env.PORT || 3333}/api
 });
 
 export default api;
