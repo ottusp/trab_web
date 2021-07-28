@@ -78,7 +78,7 @@ export default function AdminItemModal (props) {
                 return;
             }
         } else if (props.type == "edit") {  // if the component is being used as an edit modal, it updates the product info and latter updates its image
-            try {
+            try { // updates the product info
                 var response = await api.put(`/product/${props.info._id}`, {
                     name,
                     price,
@@ -101,7 +101,7 @@ export default function AdminItemModal (props) {
             let formData = new FormData()
             formData.append('img', img);
 
-            try {
+            try {   // updates the product image
                 response = await fetch(`http://localhost:3333/api/product/setImg/${props.info._id}`, {
                     method: "POST",
                     headers: {
