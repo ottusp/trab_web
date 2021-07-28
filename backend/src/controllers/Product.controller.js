@@ -3,11 +3,7 @@ const Product = require('../models/Product');
 module.exports = {
     // shows products in database
     async show (req, res) {
-<<<<<<< HEAD
-        if (!req.query?.id && !req.query?.name) {
-=======
         if (!req.query?.id && !req.query?.name) { // if no id or name is passed through query params, it shows all products in database
->>>>>>> fc991d01e8ca91a969895224887a47b7ea6ed020
             return module.exports.showAll(req, res);
         }
 
