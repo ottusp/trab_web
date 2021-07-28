@@ -12,9 +12,11 @@ import Footer from '../../components/Footer/index';
 
 import api from '../../services/api';
 
+// Admin dashboard page to manage the products
 export default function AdminDashboard (props) {
     const [products, setProducts] = useState([]);
     
+    // get all the products stored in the database through the backend
     useEffect(async () => {
         try {
             const response = await api.get('/product/');
@@ -41,6 +43,7 @@ export default function AdminDashboard (props) {
                 </div>
 
                 {
+                    // Creates an ItemOverview component for each product
                     products.map((item) => (
                         <div className="overview-item">
                             <AdminItemOverview id={item._id} info={item} />

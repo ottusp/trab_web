@@ -12,13 +12,16 @@ import AdminItemModal from '../../components/AdminItemModal/index';
 import api from '../../services/api';
 
 
+// ItemOverview component to let the admin manage each item
 export default function AdminItemOverview (props) {
+    // fills the fields with the item information
     const name = props.info?.name;
     const price = parseFloat(props.info?.price).toFixed(2);
     const inStock = props.info?.inStock;
     const img = props.info?.picURL;
     const history = useHistory();
 
+    // deletes an item in database
     async function handleDelete() {
         // alert('Deletado!');
         if (props.handleDeleteMock) props.handleDeleteMock();
@@ -69,7 +72,7 @@ export default function AdminItemOverview (props) {
             <div id={`item-edit-modal-${props.id}`} className="modal fade admin-edit-modal" tabindex="-1">
                 <div className="modal-dialog">
                     <div className="modal-content">
-                        <AdminItemModal type="edit" info={props.info} />
+                        <AdminItemModal type="edit" info={props.info} /> {/* each ItemOverview has its own modal to let the admin edit the item information */}
                     </div>
                 </div>
             </div>

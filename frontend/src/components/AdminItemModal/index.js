@@ -8,6 +8,7 @@ import sushi from './sushi.jpg';
 
 import api from '../../services/api';
 
+// Item modal to create or edit an item depending on props.type, that is set when this component is called 
 export default function AdminItemModal (props) {
     const [btnLabel, setBtnLabel] = useState("ADICIONAR");
     const [name, setName] = useState("");
@@ -18,6 +19,7 @@ export default function AdminItemModal (props) {
 
     let history = useHistory();
 
+    // if this component is being used as an edit modal, fills the item info fields with info from database
     useEffect(() => {
         if (props.type === "edit") {
             setBtnLabel("EDITAR");
@@ -32,11 +34,14 @@ export default function AdminItemModal (props) {
         }
     }, []);
 
+    // form submission handler
     async function handleSubmit() {
         if(props.handleSubmitMock) props.handleSubmitMock();
         
+        // if the component is being used for creation, it creates a product according to the info filled in forms
         if (props.type === "create") {
             try {
+                // first it creates a product
                 var response = await api.post('/product/', {
                     name,
                     price,
@@ -56,22 +61,9 @@ export default function AdminItemModal (props) {
                 return;
             }
             
+            // latter it sets its image
             let formData = new FormData()
             formData.append('img', img);
-
-            // try {
-            //     var response = await api.post(`/product/setImg/${1}`, {
-            //         formData
-            //     }, {
-            //         withCredentials: true,
-            //     });
-            // } catch (err) {
-            //     alert('Erro ao criar imagem');
-            // }
-
-            // if (response.status == 200) {
-            //     alert('imagem ok')
-            // }
 
             try {
                 response = await fetch(`http://localhost:3333/api/product/setImg/${response.data._id}`, {
@@ -85,8 +77,8 @@ export default function AdminItemModal (props) {
                 console.log(err);
                 return;
             }
-        } else if (props.type == "edit") {
-            try {
+        } else if (props.type == "edit") {  // if the component is being used as an edit modal, it updates the product info and latter updates its image
+            try { // updates the product info
                 var response = await api.put(`/product/${props.info._id}`, {
                     name,
                     price,
@@ -109,7 +101,7 @@ export default function AdminItemModal (props) {
             let formData = new FormData()
             formData.append('img', img);
 
-            try {
+            try {   // updates the product image
                 response = await fetch(`http://localhost:3333/api/product/setImg/${props.info._id}`, {
                     method: "POST",
                     headers: {
@@ -128,7 +120,6 @@ export default function AdminItemModal (props) {
 
     return (
         <div className="container admin-item-modal-container">
-            {/* <img id={`img-preview-item-modal-${props.info?.id ? props.info.id : 'create'}`} src={sushi} className="admin-item-modal-img" alt="sushi" /> */}
             <input type="file" className="admin-item-modal-input-img" onChange={ (e) => setImg(e.target.files[0]) }/>
             
             <div className="adm-modal-item-inputs">
