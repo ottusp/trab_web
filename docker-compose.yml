@@ -1,19 +1,5 @@
 version: "3"
 services:
-    hungrypoints_redis:
-        image: redis
-        ports:
-            - 6379:6379
-        container_name: cache
-
-    hungrypoints_mongodb:
-        image: mongo
-        ports: 
-            - 27017:27017
-        container_name: database
-        logging:
-            driver: "none"
-
     hungrypoints_node:
         build: 
             context: ./backend/
@@ -22,8 +8,6 @@ services:
             - 3333:3333
         container_name: node
         depends_on:
-            - hungrypoints_redis
-            - hungrypoints_mongodb
         environment:
             - REDIS_HOSTNAME=hungrypoints_redis
             - MONGO_HOSTNAME=hungrypoints_mongodb
