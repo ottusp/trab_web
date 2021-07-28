@@ -4,9 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import sushi from './sushi.jpg';
 
-export default function ProductCard() {
-
-    let description = `Mussum Ipsum, cacilds vidis litro abertis. Diuretics paradis num copo é motivis de denguis. Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo! In elementis mé pra quem é amistosis quis leo. Aenean aliquam molestie leo, vitae iaculis nisl.`;
+export default function ProductCard(props) {
 
     return (
         <div className="product-card card">
@@ -17,7 +15,7 @@ export default function ProductCard() {
 
                 <div className="product-card text-container">
                     <p className="product-card description">
-                        {description}
+                        {props.description}
                     </p>
                 </div>
             </div>

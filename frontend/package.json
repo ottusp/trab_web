@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.1",
+    "chokidar": "^3.5.2",
     "mdb-react-ui-kit": "*",
     "query-string": "^4.3.4",
     "react": "^17.0.2",
