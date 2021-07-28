@@ -17,8 +17,6 @@ export default function Product(props) {
     const [comments, setComments] = useState([]);
     const [orders, setOrders] = useState([]);
 
-    localStorage.setItem('userId', '610099ec61d1d40cb8206062');
-
     useEffect(async () => {
         const userId = props.match.params.id;
         try {
@@ -55,16 +53,21 @@ export default function Product(props) {
         const userId = localStorage.getItem("userId");
         const productId = product._id;
 
+        if(!userId) {
+            alert("Você não está logado!");
+            return;
+        }
         try {
             var response = await api.post(`/cart/${userId}`, {
                 productId: productId,
                 productQuantity: 1
             } );
+
+            console.log(response);
         } catch(err) {
             console.log("Erro ao adicionar item ao carrinho: ", err);
         }
-        console.log(response);
-        setOrders(response.data.products)
+        // setOrders(response.data.products)
     }
 
     return (

@@ -13,7 +13,7 @@ const show = async (req, res) => {
     }
     
     try {
-        const user = await User.findById(userId);
+        var user = await User.findById(userId);
     } catch (err) {
         console.log(err);
         return res.status(500).end();
@@ -61,6 +61,10 @@ const addItem = async (req, res) => {
     } catch (err) {
         console.log(err);
         return res.status(500).end();
+    }
+
+    if(!user) {
+        return res.status(400).send('User not found');
     }
 
     if(!user.cart) {
