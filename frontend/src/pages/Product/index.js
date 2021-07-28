@@ -12,12 +12,26 @@ import CartModal from '../../components/CartModal/CartModal';
 
 import api from '../../services/api';
 
-export default function Product() {
+export default function Product(props) {
+    const [product, setProduct] = useState({});
     const [comments, setComments] = useState([]);
+    const [orders, setOrders] = useState([]);
+
+    localStorage.setItem('userId', '610099ec61d1d40cb8206062');
+
+    useEffect(async () => {
+        const userId = props.match.params.id;
+        try {
+            const response = await api.get('/product/', {params: {id:userId}});
+            setProduct(response.data);
+        } catch(err) {
+            console.log('erro no get do produto: ', err);
+        }
+    }, []);
     
     useEffect(async () => {
         try {
-            const response = await api.get('/comment/');
+            const response = await api.get('/comment/', {params: {id:product._id}});
             console.log('response: ', response.data);
 
             setComments(response.data);
@@ -26,13 +40,31 @@ export default function Product() {
         }
     }, []);
 
-    const product = {
-        _id: 0,
-        img: "img",
-        name: "Sushi tope",
-        description: "aaa",
-        price: "51,99",
-        inStock: "83"
+    useEffect(async () => {
+        try {
+            const userId = localStorage.getItem('userId');
+            const response = await api.get(`/cart/${userId}`);
+            setOrders(response.data.products);
+        } catch (err) {
+            console.log('Erro ao dar get para o carrinho: ', err);
+        }
+    }, []);
+
+    const addToCart = async () => {
+        console.log("Adicionando item ao carrinho");
+        const userId = localStorage.getItem("userId");
+        const productId = product._id;
+
+        try {
+            var response = await api.post(`/cart/${userId}`, {
+                productId: productId,
+                productQuantity: 1
+            } );
+        } catch(err) {
+            console.log("Erro ao adicionar item ao carrinho: ", err);
+        }
+        console.log(response);
+        setOrders(response.data.products)
     }
 
     return (
@@ -42,7 +74,7 @@ export default function Product() {
 
                 <div className="product-container row align-items-start justify-content-center">
                     <div className="product-card-container col">
-                        <ProductCard />
+                        <ProductCard description={product.description} />
                     </div>
 
                     <div className="info-container col">
@@ -89,7 +121,7 @@ export default function Product() {
 
                         <div className="buttons-container d-flex justify-content-md-evenly">
 
-                            <button id="cart-button" className="product-button" data-bs-toggle="modal" data-bs-target="#add-to-cart-modal">
+                            <button id="cart-button" className="product-button" data-bs-toggle="modal" data-bs-target="#add-to-cart-modal" onClick={addToCart}>
                                 Adicionar ao carrinho
                             </button>
 

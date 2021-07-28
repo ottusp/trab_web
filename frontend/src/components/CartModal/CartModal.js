@@ -1,41 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import api from '../../services/api';
 import CartModalListItem from '../CartModalListItem/CartModalListItem';
 
 import './style.css';
 
 export default function CartModal(props) {
 
-    const orders = {
-        data: [
-            {
-                _id: 0,
-                name: "Sushi tope",
-                price: "51.99",
-                selectedQuantity: 4
-            },
-            {
-                _id: 1,
-                name: "Sorvete Beijo",
-                price: "8.50",
-                selectedQuantity: 1
-            },
-            {
-                _id: 0,
-                name: "Lanche do Podrao",
-                price: "18.90",
-                selectedQuantity: 2
-            },
-        ],
-        totalPrice() {
-            const sum = this.data.reduce((acc, order) => {
-                const price = parseFloat(order.price); 
-                const subTotal = price * order.selectedQuantity;
-                return acc + subTotal;
-            }, 0);
+    const [orders, setOrders] = useState([]);
 
-            return sum;
+    useEffect(async () => {
+        try {
+            const userId = localStorage.getItem('userId');
+            const response = await api.get(`/cart/${userId}`);
+            setOrders(response.data.products);
+        } catch (err) {
+            console.log('Erro ao dar get para o carrinho: ', err);
         }
+    }, []);
+
+    const totalPrice = () => {
+        const sum = orders.reduce((acc, order) => {
+            const price = parseFloat(order.product.price);
+            const subTotal = price * order.quantity;
+            return acc + subTotal;
+        }, 0);
+
+        return sum.toFixed(2);
     }
 
     const handleClearRow = () => {
@@ -60,12 +51,12 @@ export default function CartModal(props) {
             </div>
 
             <div className="modal-body">
-                {orders.data.map(order => (
-                    <CartModalListItem key={order.name} order={order} />
+                {orders.map(order => (
+                    <CartModalListItem key={order.product.name} order={order.product} />
                 ))}
                 <div className="total-price-container">
                     <div className="total-price">
-                        Total: R${orders.totalPrice()}
+                        Total: R${totalPrice()}
                     </div>
                 </div>
             </div>
