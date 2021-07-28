@@ -13,7 +13,7 @@ const show = async (req, res) => {
     }
     
     try {
-        const user = await User.findById(userId);
+        var user = await User.findById(userId);
     } catch (err) {
         console.log(err);
         return res.status(500).end();
@@ -24,7 +24,7 @@ const show = async (req, res) => {
     }
 
     try {
-        const cart = await Cart.findById(user.cart).populate({
+        var cart = await Cart.findById(user.cart).populate({
             path: "products",
             populate: "product"
         });

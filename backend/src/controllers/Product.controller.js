@@ -86,7 +86,7 @@ module.exports = {
             return res.status(404).end();
         }
 
-        product.picURL = `https://hungrypoints.herokuapp.com/api/static/${req.file?.filename}`;
+        product.picURL = `http://localhost:3333/api/static/${req.file?.filename}`;
 
         try {
             await product.save();

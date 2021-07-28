@@ -9,6 +9,7 @@ module.exports = {
 
     // Checks whether the user is an admin or not. Used for functionalities that require the user to be an admin
     isAdmin (req, res, next) {
+        console.log(req);
         if (req.user?.isAdmin === true) {
             return next();   
         } else return res.status(403).end();

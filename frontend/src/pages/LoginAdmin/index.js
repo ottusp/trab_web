@@ -47,7 +47,7 @@ export default function LoginAdmin(){
                         <Link to = "/">
                             <button id="btn" type="button" className="btn btn-danger" onClick={handleSubmit}>Entrar</button>
                         </Link>
-                        <a id="link" href="/cadastro" title="Não tenho cadastro">Não tenho cadastro</a>
+                        <a id="link" href="/cadastroAdmin" title="Não tenho cadastro">Não tenho cadastro</a>
                         <a id="link" href="/" title="voltar">Voltar</a>
                     </div>
                         

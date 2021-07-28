@@ -17,7 +17,12 @@ export default function ModalEditPerfil (props) {
     //update changes on server
     async function handleSubmit() {
         try {
-            var response = await api.put(`/user/?id=${props.id}`, {
+            let id = sessionStorage.getItem('userId');
+            if (!id) {
+                alert('Nao e possivel editar usuario')
+                return;
+            }
+            var response = await api.put(`/user/${id}`, {
                 name,
                 email,
                 phone,
