@@ -66,7 +66,7 @@ Antes de tudo é recomendado atualizar seu sistema. Em seguida, instale com o se
 
 Para iniciá-lo vá ao diretório principal do projeto, o trab_web, e execute o comando "sudo docker-compose up"
 
-Para outras dúvidas consulte o link: docker-docs [nesse link](https://docs.docker.com/get-docker/), docker-docs.
+Para outras dúvidas consulte o link: [docker-docs](https://docs.docker.com/get-docker/).
 
 Ele vai baixar o banco de dados Redis, o MongoDB, o Nodejs e outras dependências, e por isso pode levar alguns minutos até a inicialização completa na primeira vez que executar o docker.
 
