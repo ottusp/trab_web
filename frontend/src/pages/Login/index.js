@@ -12,7 +12,7 @@ export default function Login(){
     //Create a new session on server
     async function handleSubmit() {        
         try {
-            await api.post('/session/login', {
+            var res = await api.post('/session/login', {
                 email,
                 password
             }, {
@@ -23,6 +23,7 @@ export default function Login(){
             console.log(e);
             return;
         }
+        console.log(res.data)
     }
 
     return (
