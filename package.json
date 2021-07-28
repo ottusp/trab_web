@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node backend/src/index.js"
+    "start": "sudo node backend/src/index.js"
     },
   "dependencies": {
     "boostrap": "^2.0.0",
