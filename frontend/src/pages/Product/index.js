@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import bootstrap from 'bootstrap';
+import ModalComment from '../../components/ModalComment/index';
 
 import './style.css';
 
@@ -17,12 +18,10 @@ export default function Product(props) {
     const [comments, setComments] = useState([]);
     const [orders, setOrders] = useState([]);
 
-    localStorage.setItem('userId', '610099ec61d1d40cb8206062');
-
     useEffect(async () => {
         const userId = props.match.params.id;
         try {
-            const response = await api.get('/product/', {params: {id:userId}});
+            var response = await api.get('/product/', {params: {id:userId}});
             setProduct(response.data);
         } catch(err) {
             console.log('erro no get do produto: ', err);
@@ -31,7 +30,7 @@ export default function Product(props) {
     
     useEffect(async () => {
         try {
-            const response = await api.get('/comment/', {params: {id:product._id}});
+            var response = await api.get('/comment/', {params: {id:product._id}});
             console.log('response: ', response.data);
 
             setComments(response.data);
@@ -40,31 +39,36 @@ export default function Product(props) {
         }
     }, []);
 
-    useEffect(async () => {
-        try {
-            const userId = localStorage.getItem('userId');
-            const response = await api.get(`/cart/${userId}`);
-            setOrders(response.data.products);
-        } catch (err) {
-            console.log('Erro ao dar get para o carrinho: ', err);
-        }
-    }, []);
+    // useEffect(async () => {
+    //     try {
+    //         const userId = localStorage.getItem('userId');
+    //         var response = await api.get(`/cart/${userId}`);
+    //         setOrders(response.data.products);
+    //     } catch (err) {
+    //         console.log('Erro ao dar get para o carrinho: ', err);
+    //     }
+    // }, []);
 
     const addToCart = async () => {
         console.log("Adicionando item ao carrinho");
         const userId = localStorage.getItem("userId");
         const productId = product._id;
 
+        if(!userId) {
+            alert("Você não está logado!");
+            return;
+        }
         try {
             var response = await api.post(`/cart/${userId}`, {
                 productId: productId,
                 productQuantity: 1
             } );
+
+            console.log(response);
         } catch(err) {
             console.log("Erro ao adicionar item ao carrinho: ", err);
         }
-        console.log(response);
-        setOrders(response.data.products)
+        // setOrders(response.data.products)
     }
 
     return (
@@ -106,17 +110,6 @@ export default function Product(props) {
                                 ))
                             }
 
-                            {/* <CommentCard 
-                                userName="Lucas Romero"
-                                rating = "0.3"
-                                content = "Eu amo esse sushi, acho ele muito tope. Uma vez, eu pedi ele 10 vezes na minha casa no mesmo mês, e não me arrependo. Nota 10!"
-                            />
-
-                            <CommentCard 
-                                userName="Larissa Freire"
-                                rating="4.9"
-                                content="Sinceramente, fiquei fascinada com esse sushi. Provavelmente a melhor comida oriental que já comi."
-                            /> */}
                         </div>
 
                         <div className="buttons-container d-flex justify-content-md-evenly">
@@ -125,7 +118,7 @@ export default function Product(props) {
                                 Adicionar ao carrinho
                             </button>
 
-                            <button className="product-button">
+                            <button className="product-button" data-bs-toggle="modal" data-bs-target="#comment-modal">
                                 Adicionar novo comentario
                             </button>
 
@@ -140,6 +133,14 @@ export default function Product(props) {
 
                 </div>
                 
+                <div id="comment-modal" className="modal fade admin-edit-modal" tabindex="-1">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <ModalComment product_id={product._id}/>
+                        </div>
+                    </div>
+                </div>
+
                 <Footer />
             </div>
         </div>

@@ -63,6 +63,10 @@ const addItem = async (req, res) => {
         return res.status(500).end();
     }
 
+    if(!user) {
+        return res.status(400).send('User not found');
+    }
+
     if(!user.cart) {
         const cart = Cart.create({});
         user.cart = cart._id;
