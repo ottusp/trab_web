@@ -66,7 +66,7 @@ export default function AdminItemModal (props) {
             formData.append('img', img);
 
             try {
-                response = await fetch(`http://localhost:3333/api/product/setImg/${response.data._id}`, {
+                response = await fetch(`http://localhost:80/api/product/setImg/${response.data._id}`, {
                     method: "POST",
                     headers: {
                         'Accept': 'application/json' 
@@ -102,7 +102,7 @@ export default function AdminItemModal (props) {
             formData.append('img', img);
 
             try {   // updates the product image
-                response = await fetch(`http://localhost:3333/api/product/setImg/${props.info._id}`, {
+                response = await fetch(`http://localhost:80/api/product/setImg/${props.info._id}`, {
                     method: "POST",
                     headers: {
                         'Accept': 'application/json' 
