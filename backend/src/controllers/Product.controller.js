@@ -3,11 +3,7 @@ const Product = require('../models/Product');
 module.exports = {
     // shows products in database
     async show (req, res) {
-<<<<<<< HEAD
-        if (!req.query?.id && !req.query?.name) {
-=======
         if (!req.query?.id && !req.query?.name) { // if no id or name is passed through query params, it shows all products in database
->>>>>>> fc991d01e8ca91a969895224887a47b7ea6ed020
             return module.exports.showAll(req, res);
         }
 
@@ -156,44 +152,4 @@ module.exports = {
 
         return res.status(200).end();
     },
-
-    // "sells" a product. it subtracts a quantity from the "inStock" property and sums it to "sold" property
-    async sell (req, res) {
-        if (!req.params?.id) {
-            return res.status(400).end();
-        }
-
-        let quantity = req.body?.id;
-
-        if (!quantity) {
-            return res.status(400).end();
-        }
-
-        try {
-            var product = await Product.findById(req.params.id);    // gets the product
-        } catch (err) {
-            if (err.kind == "ObjectId") {
-                return res.status(404).end();
-            }
-            console.log(err);
-            return res.status(500).end();
-        }
-
-        if (!product) {
-            return res.status(404).end();
-        }
-
-        // "sells" it
-        product.inStock -= quantity;
-        product.sold += quantity;
-        
-        try {
-            await product.save();   // saves the operation
-        } catch (err) {
-            console.log(err);
-            return res.status(500).end();
-        }
-
-        return res.status(200).end();
-    }
 }

@@ -4,20 +4,23 @@ const User = require('../models/User');
 const Product = require('../models/Product');
 
 /**
- * Function for retriving the purchase cart, given a userId passed by query params
+ * Function for retriving the purchase cart, given a userId passed by params
  */
 const show = async (req, res) => {
-    const userId = req.params["userId"];
+    const userId = req.params?.userId;
     if(!userId) {
         return res.status(400).end();
     }
     
-    const user = await User.findById(userId).populate('cart');
+    const user = await User.findById(userId);
     if(!user) {
         return res.status(400).end();
     }
 
-    const cart = await user.cart;
+    const cart = await Cart.findById(user.cart).populate({
+        path: "products",
+        populate: "product"
+    });
     return res.status(200).json(cart);
 }
 
@@ -25,43 +28,136 @@ const show = async (req, res) => {
  * Function for adding an item to cart
  * Params: 
  *  userId: the ID of the corresponding User
+ * 
+ * Body:
+ *  A JSON containing the product Id and the product quantity selected
  */
 const addItem = async (req, res) => {
-    const userId = req.params["userId"];
+    const userId = req.params?.userId;
     if (!userId) {
         return res.status(400).end();
     }
 
-    const productId = req.body?.product?.id;
     try {
-        var product = await Product.findById(productId);
-    } catch(err) {
+        var user = await User.findById(userId).populate({
+            path: "cart",
+            populate: {
+                path: "products",
+                populate: "product"
+            }
+        });
+    } catch (err) {
         console.log(err);
         return res.status(500).end();
     }
 
-    console.log("Produto: ", product);
-    console.log("Puxando o usuario do DB");
-
-    const user = await User.findById(userId).populate('cart');
     if(!user.cart) {
-        console.log('Criando novo carrinho');
-        user.cart = new Cart({});
+        const cart = Cart.create({});
+        user.cart = cart._id;
+        await user.save();
+        try {
+            await user.save();
+        } catch (err) {
+            console.log(err);
+            return res.status(500).end();
+        }
+    }
+    const productId = req.body?.productId;
+    const quantity = req.body?.productQuantity;
+
+    let _product = null;
+    user.cart.products.forEach( (product) => {
+        if(product.product._id == productId) {
+            product.quantity += quantity;
+            
+            _product = product;
+            return;
+        }
+    });
+
+    if(_product) {
+        try {
+                await _product.save();
+            } catch (err) {
+                console.log(err);
+                return res.status(500).end();
+        }
+    } else {
+        try {
+            var product = await Product.findById(productId);
+        } catch (err) {
+            console.log(err);
+            return res.status(500).end();
+        }
+    
+        const cartItem = await CartItem.create({
+            product: product._id,
+            quantity: quantity
+        });
+    
+        user.cart.products.push(cartItem);
+    }
+    await user.cart.save();
+
+    return res.status(201).json(user.cart);
+}
+
+/**
+ * Function for "purchasing" the products in the cart
+ * Params:
+ *  userId: the ID of the corresponding User
+ *
+ * Body:
+ *  A JSON containing the product Id and the product quantity selected
+ */
+const purchase = async (req, res) => {
+    if (!req.params?.userId) {
+        return res.status(400).end();
     }
 
-    const quantity = req.body?.quantity;
-    const cartItem = new CartItem({});
-    cartItem.product = product._id;
+    try {
+        var user = await User.findById(req.params.userId).populate({
+            path: "cart",
+            populate: {
+                path: "products",
+                populate: "product"
+            }
+        });
+    } catch (err) {
+        if (err.kind == "ObjectId") {
+            return res.status(404).end();
+        }
+        console.log(err);
+        return res.status(500).end();
+    }
 
-    user.cart.products.push({
-        product: product._id,
-        quantity: quantity
+    const products = user.cart.products;
+    products.forEach( async (product) => {
+        if(product.product.inStock >= product.quantity) {
+            product.product.inStock -= product.quantity;
+            product.product.sold += product.quantity;
+            try {
+                await Product.updateOne({ _id: product.product._id }, { inStock: product.product.inStock, sold: product.product.sold });
+            } catch (err) {
+                console.log(err);
+                return res.status(500).end();
+            }
+        }
     });
-    user.cart.save();
-    return res.status(201).json(user.cart);
+
+    user.cart.products = [];
+    try {
+        await user.cart.save();
+    } catch (err) {
+        console.log(err);
+        return res.status(500).end();
+    }
+
+    return res.status(200).end();
 }
 
 module.exports = {
     show,
-    addItem
+    addItem,
+    purchase
 };

@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Cart = require('../models/Cart/Cart');
 
 module.exports = {
     // function to show users from database
@@ -8,7 +9,7 @@ module.exports = {
         }
 
         try {
-            var user = await User.findById(req.query.id);   // finds an user and returns it
+            var user = await User.findById(req.query.id).populate('Cart');   // finds an user and returns it
         } catch (err) {
             if (err.kind == "ObjectId") {
                 return res.status(404).end();
@@ -23,7 +24,7 @@ module.exports = {
     // shows all users in database
     async showAll (req, res) {
         try {
-            var users = await User.find({});
+            var users = await User.find({}).populate('Cart');
         } catch (err) {
             console.log(err);
             return res.status(500).end();
@@ -40,9 +41,10 @@ module.exports = {
         let phone = req.body?.phone;
         let isAdmin = req.body?.isAdmin;
         let password = req.body?.password;
+        let cart = await Cart.create({});
 
         try {
-            var user = await User.create({ name, address, email, phone, isAdmin, password });
+            var user = await User.create({ name, address, email, phone, isAdmin, password, cart: cart._id });
         } catch (err) {
             console.log(err);
             return res.status(500).end();
