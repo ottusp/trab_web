@@ -15,7 +15,8 @@ const CartRoutes = require('./routes/Cart.routes');
 
 require('dotenv').config();
 
-const mongoHostname = process.env.MONGO_HOSTNAME || 'localhost';
+const mongodb_user = "trabweb";
+const mongodb_password = "senhatopper";
 
 const app = express();
 
@@ -31,13 +32,13 @@ app.use('/api/static', express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
 // Connect to mongodb database
-mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@cluster0.fbolq.mongodb.net/hungryPoints?retryWrites=true&w=majority`, {
+mongoose.connect(`mongodb+srv://${mongodb_user}:${mongodb_password}@cluster0.fbolq.mongodb.net/hungryPoints?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
 
 
-// Start express-session with Redis
+// Start express-session
 app.use(session({
     resave: true,
     name: "hungrySession",
@@ -81,7 +82,7 @@ app.use((req, res, next) => {
     res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
 
-port = process.env.PORT || 3333;
+port = 80;
 
 // Start server
 app.listen(port, () => {

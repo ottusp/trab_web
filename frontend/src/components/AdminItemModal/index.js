@@ -56,7 +56,7 @@ export default function AdminItemModal (props) {
                 return;
             }
 
-            if (response.status != 200) {
+            if (response.status != 201) {
                 alert('Erro ao criar produto');
                 return;
             }
