@@ -9,15 +9,15 @@ export default function CartModal(props) {
 
     const [orders, setOrders] = useState([]);
 
-    useEffect(async () => {
-        try {
-            const userId = localStorage.getItem('userId');
-            const response = await api.get(`/cart/${userId}`);
-            setOrders(response.data.products);
-        } catch (err) {
-            console.log('Erro ao dar get para o carrinho: ', err);
-        }
-    }, []);
+    // useEffect(async () => {
+    //     try {
+    //         const userId = localStorage.getItem('userId');
+    //         const response = await api.get(`/cart/${userId}`);
+    //         setOrders(response.data.products);
+    //     } catch (err) {
+    //         console.log('Erro ao dar get para o carrinho: ', err);
+    //     }
+    // }, []);
 
     const totalPrice = () => {
         const sum = orders.reduce((acc, order) => {

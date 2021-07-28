@@ -6,8 +6,8 @@ module.exports = {
         try {
             var comment = await Comment.create({ 
                 user: req.body?.user,
-                rating: req.body?.product,
-                product: req.body?.rating,
+                rating: req.body?.rating,
+                product: req.body?.product,
                 content: req.body?.content
             });
         } catch (err) {//error
