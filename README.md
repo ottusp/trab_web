@@ -62,21 +62,24 @@ Para visualizar os resultados dos testes para o backend acesse o diretório Post
 ## Como rodar o projeto
 Para rodar o projeto basta baixar esse repositório (ou cloná-lo na sua máquina).
 
-Para facilitar a instalação de todos os pacotes do frontend e backend, em suas respectivas versões requeridas, pode-se rodar o docker para executar a aplicação.
+Para iniciar a aplicação vá ao diretório principal do projeto, o trab_web e de lá acesse a pasta backend com o comando "cd backend"
 
-Antes de tudo é recomendado atualizar seu sistema. Em seguida, instale com o seu gerenciador de pacote padrão o docker e o docker-compose.
+Para inciar o Backend basta rodar o comendo "sudo yarn dev"
 
-Para iniciá-lo vá ao diretório principal do projeto, o trab_web, e execute o comando "sudo docker-compose up"
+Em outra aba do terminal rode o frontend na pasta "frontend" acessando pelo comendo "cd frontend" a partir do diretório principal "trab_web"
 
-Para outras dúvidas consulte o link: [docker-docs](https://docs.docker.com/get-docker/).
-
-Ele vai baixar o banco de dados Redis, o MongoDB, o Nodejs e outras dependências, e por isso pode levar alguns minutos até a inicialização completa na primeira vez que executar o docker.
+Para iniciar o frontend instale as dependências executando o comando nesse mesmo diretório: "npm install" e em seguida "yarn start"
 
 Após isso basta abrir no seu browser uma guia no localhost da porta padrão 3000, e assim você poderá ver a aplicação em execução.
 Se quiser acessar alguma página manualmente digite no broser seu caminho:
 Exemplo para a página de login: http://localhost:3000/login
 
 Você pode encontrar o caminho para todas as páginas acessando trab_web/frontend/src/routes.js
+
+Você pode baixar o yarn e o npm com seu gerenciador de pacotes padrão.
+
+O protótipo do deploy se encontra no link: [deploy](https://hungrypoints.herokuapp.com/), mas o deploy no heroku está desatualizado em relção ao que se encontra aqui no github.
+
 
 ## Problemas
 (FirstMilestone) Já tivemos problemas relacionados à responsividade do nosso protótipo e com o aprendizado rápido de frameworks de css. O segundo fator impacta no primeiro, fazendo com que a tela principal tenha divergências em relação ao protótipo no Figma. Para o próximo milestone, esperamos ter resolvido esse problema, dominando os frameworks de front-end e dedicando mais tempo à usabilidade das nossas páginas.
