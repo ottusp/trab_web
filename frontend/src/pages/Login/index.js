@@ -23,7 +23,9 @@ export default function Login(){
             console.log(e);
             return;
         }
-        console.log(res.data)
+
+        console.log(res.data._id);
+        localStorage.setItem('userId', res.data._id);
     }
 
     return (

@@ -9,6 +9,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCartRounded';
 import SearchIcon from '@material-ui/icons/Search';
 import MenuIcon from '@material-ui/icons/Menu';
 import logo from './logo.jpg';
+import api from '../../services/api';
 
 //Navbar 
 export default function Header(props) {
@@ -27,6 +28,16 @@ export default function Header(props) {
         });
     }
 
+    const handleLogout = async () => {
+        try {
+            await api.post('/session/logout');
+        } catch (err) {
+            console.log(err);
+            return;
+        }
+        alert('deslogado!')
+    }
+
     return (
         <div className="Header">
             <div className="leftSide">
@@ -42,7 +53,7 @@ export default function Header(props) {
                     <DropdownButton id="dropdown-basic-button" title="Entrar">
                         <Dropdown.Item className="item" href="/login">Usuário</Dropdown.Item>
                         <Dropdown.Item className="item" href="/loginAdmin">Administrador</Dropdown.Item>
-                        <Dropdown.Item className="item" href="/">Logout</Dropdown.Item>
+                        <Dropdown.Item className="item" href="/" onClick={handleLogout}>Logout</Dropdown.Item>
                         <Dropdown.Item className="item" data-bs-toggle="modal" data-bs-target={`#item-edit-modal-${props.id}`}>Editar</Dropdown.Item>
                     </DropdownButton>
                     <button className="btn item carrinho-btn" data-bs-toggle="modal" data-bs-target="#add-to-cart-modal" href="/carrinho" ><ShoppingCartIcon className="shoppingCartIcon"/>Carrinho</button>
