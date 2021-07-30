@@ -146,14 +146,4 @@ module.exports = {
             return res.status(200).json({ name: user.name, _id: user._id, token: token });
         }
     },
-
-    async getLoginInfo (req, res) {
-        try {
-            var user = await User.findOne({ email: req.body.email }).select("name");
-        } catch (err) {
-            return res.status(500).end();
-        }
-
-        return res.status(200).json(user);
-    }
 }

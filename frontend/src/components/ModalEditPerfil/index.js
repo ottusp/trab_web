@@ -17,7 +17,7 @@ export default function ModalEditPerfil (props) {
     //update changes on server
     async function handleSubmit() {
         try {
-            let id = sessionStorage.getItem('userId');
+            let id = localStorage.getItem('userId');
             if (!id) {
                 alert('Nao e possivel editar usuario')
                 return;

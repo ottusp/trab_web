@@ -25,8 +25,6 @@ export default function Routes() {
                 <Route path="/cadastro" exact component={Cadastro} />
                 <Route path="/cadastroAdmin" exact component={CadastroAdmin} />
                 <Route path="/loginAdmin" exact component={LoginAdmin} />
-
-
             </Switch>
         </BrowserRouter>
     );

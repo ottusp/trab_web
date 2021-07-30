@@ -28,14 +28,9 @@ export default function Header(props) {
         });
     }
 
-    const handleLogout = async () => {
-        try {
-            await api.post('/session/logout');
-        } catch (err) {
-            console.log(err);
-            return;
-        }
-        alert('deslogado!')
+    const handleLogout = () => {
+        localStorage.removeItem('userId');
+        localStorage.removeItem('token');
     }
 
     return (

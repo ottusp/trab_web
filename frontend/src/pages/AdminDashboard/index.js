@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import bootstrap from 'bootstrap'
 // import 'bootstrap/js/src/modal'
@@ -15,9 +16,21 @@ import api from '../../services/api';
 // Admin dashboard page to manage the products
 export default function AdminDashboard (props) {
     const [products, setProducts] = useState([]);
+    const history = useHistory();
     
     // get all the products stored in the database through the backend
     useEffect(async () => {
+        try {
+            var res = await api.post('/session/isAdmin');
+        } catch (err) {
+            console.log(err);
+            return history.push('/');
+        }
+
+        if (res.status!=200) {
+            return history.push('/');
+        }
+
         try {
             const response = await api.get('/product/');
             console.log('response: ', response.data);

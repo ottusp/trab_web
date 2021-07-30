@@ -68,9 +68,15 @@ const addItem = async (req, res) => {
     }
 
     if(!user.cart) {
-        const cart = Cart.create({});
+        try {
+            const cart = Cart.create({});
+        } catch (err) {
+            console.log(err);
+            return res.status(500).end();
+        }
+
         user.cart = cart._id;
-        await user.save();
+
         try {
             await user.save();
         } catch (err) {
@@ -78,11 +84,12 @@ const addItem = async (req, res) => {
             return res.status(500).end();
         }
     }
+
     const productId = req.body?.productId;
     const quantity = req.body?.productQuantity;
 
     let _product = null;
-    user.cart.products.forEach( (product) => {
+    user.cart.products.forEach((product) => {
         if(product.product._id == productId) {
             product.quantity += quantity;
             
@@ -105,15 +112,27 @@ const addItem = async (req, res) => {
             console.log(err);
             return res.status(500).end();
         }
-    
-        const cartItem = await CartItem.create({
-            product: product._id,
-            quantity: quantity
-        });
-    
+        
+        try {
+            const cartItem = await CartItem.create({
+                product: product._id,
+                quantity: quantity
+            });
+        } catch (err) {
+            console.log(err);
+            return res.status(500).end();
+        }
+        
         user.cart.products.push(cartItem);
     }
-    await user.cart.save();
+
+    try {
+        await user.cart.save();
+    } catch (err) {
+        console.log(err);
+        return res.status(500).end();
+    }
+        
 
     return res.status(201).json(user.cart);
 }

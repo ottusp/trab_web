@@ -70,7 +70,8 @@ export default function AdminItemModal (props) {
                 response = await fetch(`http://localhost:3333/api/product/setImg/${response.data._id}`, {
                     method: "POST",
                     headers: {
-                        'Accept': 'application/json' 
+                        'Accept': 'application/json',
+                        'x-access-token': localStorage.getItem('token')
                     },
                     body: formData
                 })
@@ -106,7 +107,8 @@ export default function AdminItemModal (props) {
                 response = await fetch(`http://localhost:3333/api/product/setImg/${props.info._id}`, {
                     method: "POST",
                     headers: {
-                        'Accept': 'application/json' 
+                        'Accept': 'application/json',
+                        'x-access-token': localStorage.getItem('token') 
                     },
                     body: formData
                 })
