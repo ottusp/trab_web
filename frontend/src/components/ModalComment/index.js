@@ -44,12 +44,12 @@ export default function ModalComment (props) {
                <h1>Novo Comentário</h1>      
             <div className="cmt-modal-item-inputs">
                 <div className="form-floating cmt-modal-item-form-input">
-                    <input type="text" className="form-control" id="comment-item-modal-floating-name" placeholder="Comentario" value={content} onChange={e => setContent(e.target.value)} />
-                    <label for="comment-item-modal-floating-name">Comentário</label>
+                    <input type="text" className="form-control" id="comment-item-modal-floating-content" placeholder="Comentario" value={content} onChange={e => setContent(e.target.value)} />
+                    <label for="comment-item-modal-floating-content">Comentário</label>
                 </div>
                 <div className="form-floating cmt-modal-item-form-input">
-                    <input type="text" className="form-control" id="comment-item-modal-floating-name" placeholder="Nota" value={rating} onChange={e => setRating(e.target.value)} />
-                    <label for="comment-item-modal-floating-name">Nota (0-5)</label>
+                    <input type="text" className="form-control" id="comment-item-modal-floating-rating" placeholder="Nota" value={rating} onChange={e => setRating(e.target.value)} />
+                    <label for="comment-item-modal-floating-rating">Nota (0-5)</label>
                 </div>
             </div>
             <button className="btn comment-modal-btn" onClick={handleSubmit}>Enviar</button>

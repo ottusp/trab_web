@@ -4,12 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 
 export default function CartModalListItem(props) {
+    console.log("No CartModalListItem...");
     let order = {
-        _id: props.order._id,
-        name: props.order.name,
-        price: props.order.price,
-        selectedQuantity: props.order.selectedQuantity
+        _id: props.order.product._id,
+        name: props.order.product.name,
+        price: props.order.product.price,
+        selectedQuantity: props.order.quantity
     }
+    console.log("order = ", order);
 
     return(
         <div className="cart-modal-list-item container">
