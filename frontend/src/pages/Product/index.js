@@ -76,7 +76,7 @@ export default function Product(props) {
 
                 <div className="product-container row align-items-start justify-content-center">
                     <div className="product-card-container col">
-                        <ProductCard description={product.description} />
+                        <ProductCard description={product.description} img={product.picURL}/>
                     </div>
 
                     <div className="info-container col">
