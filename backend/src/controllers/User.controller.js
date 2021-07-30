@@ -1,6 +1,8 @@
 const User = require('../models/User');
 const Cart = require('../models/Cart/Cart');
 
+const jwt = require('jsonwebtoken');
+
 module.exports = {
     // function to show users from database
     async show (req, res) {
@@ -114,28 +116,34 @@ module.exports = {
     },
 
     // verifies if the email and password passed in req matches with the ones stored in database for that user
-    // this function is used in passport login and session creation logic
-    async verifyLogin (email, password, cb) {
-        if (!email || !password) {
-            return cb(null, null);
-        }
+    // and returns user's info and its jwt
+    async login (req, res) {
+        const email = req.body?.email;
+        const password = req.body?.password;
 
         try {
             var user = await User.findOne({ email });
         } catch (err) {
             console.log(err);
-            return cb(err, null);
+            return res.status(500).end();
         }
 
         if (!user) {
-            return cb(null, null);
+            return res.status(404).end();
         }
 
-        if (password === user.password) {
-            return cb(null, user);
+        if (password !== user.password) {
+            return res.status(401).end();
         }
         else {
-            return cb(null, null);
+            let token = jwt.sign({
+                id: user.id,
+                isAdmin: user.isAdmin
+            }, 'segredomuitoseguro', {
+                expiresIn: 86400,
+            });
+
+            return res.status(200).json({ name: user.name, _id: user._id, token: token });
         }
     },
 

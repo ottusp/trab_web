@@ -36,6 +36,7 @@ export default function Principal(){
         } catch (e) {
             console.log('erro no get: ', e);
         }
+
     }, []);
 
     return (

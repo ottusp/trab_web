@@ -1,6 +1,6 @@
 import React, {useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import api from '../../services/api';
 import './style.css';
 
@@ -8,6 +8,7 @@ import './style.css';
 export default function Login(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const history = useHistory();
 
     //Create a new session on server
     async function handleSubmit() {        
@@ -24,8 +25,16 @@ export default function Login(){
             return;
         }
 
-        console.log(res.data._id);
+        if (res.status != 200) {
+            alert('Login invalido');
+            return;
+        }
+
+        console.log('retorno do login: ', res.data);
         localStorage.setItem('userId', res.data._id);
+        localStorage.setItem('token', res.data.token);
+
+        history.push('/');
     }
 
     return (
@@ -46,9 +55,7 @@ export default function Login(){
                             <input type="password" class="form-control" id="floatingPassword" placeholder="Senha" value={password} onChange={e => setPassword(e.target.value)}/>
                             <label for="floatingPassword">Senha</label>
                         </div>
-                        <Link to = "/">
-                            <button id="btn" type="button" className="btn btn-danger" onClick={handleSubmit}>ENTRAR</button>
-                        </Link>
+                        <button id="btn" type="button" className="btn btn-danger" onClick={handleSubmit}>ENTRAR</button>
                         <a id="link" href="/cadastro" title="Não tenho cadastro">Não tenho cadastro</a>
                         <a id="link" href="/" title="voltar">Voltar</a>
                     </div>

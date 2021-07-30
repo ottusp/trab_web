@@ -2,9 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const cors = require('cors');
-const session = require('express-session');
-const passport = require('passport');
-const MongoStore = require('connect-mongo');
 
 const UserRoutes = require('./routes/User.routes');
 const ProductRoutes = require('./routes/Products.routes');
@@ -27,7 +24,6 @@ app.use(cors({
 }));
 
 // Allow folder to be accessed from frontend
-
 app.use('/api/static', express.static(path.join(__dirname, 'public')));
 
 app.use(express.json());
@@ -37,31 +33,6 @@ mongoose.connect(`mongodb+srv://${mongodb_user}:${mongodb_password}@cluster0.fbo
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
-
-
-// Start express-session
-app.use(session({
-    resave: true,
-    name: "hungrySession",
-    saveUninitialized: true,
-    cookie: {
-        secure: false, 
-        httpOnly: false, 
-        sameSite: 'strict', 
-        maxAge: 3600000 
-    },
-    secret: 'secret_topper',
-    store: MongoStore.create({
-        mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@cluster0.fbolq.mongodb.net/hungryPoints?retryWrites=true&w=majority`,
-        ttl: 60*60*4,
-        autoRemove: 'native'
-    }),
-}));
-
-// Initialize passport with sessions
-app.use(passport.initialize());
-app.use(passport.session());
-
 
 // Log request info
 app.use((req, res, next) => {
