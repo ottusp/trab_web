@@ -17,6 +17,9 @@ export default function Product(props) {
     const [product, setProduct] = useState({});
     const [comments, setComments] = useState([]);
     const [orders, setOrders] = useState([]);
+    console.log("Orders = ", orders);
+
+    const [addToCartButtonClicked, setAddToCartButtonClicked] = useState(0);
 
     useEffect(async () => {
         const userId = props.match.params.id;
@@ -39,22 +42,18 @@ export default function Product(props) {
         }
     }, []);
 
-    // useEffect(async () => {
-    //     try {
-    //         const userId = localStorage.getItem('userId');
-    //         var response = await api.get(`/cart/${userId}`);
-    //         setOrders(response.data.products);
-    //     } catch (err) {
-    //         console.log('Erro ao dar get para o carrinho: ', err);
-    //     }
-    // }, []);
 
-    const addToCart = async () => {
+    const addToCart = () => {
+        setAddToCartButtonClicked(addToCartButtonClicked + 1);
+        console.log(addToCartButtonClicked);
+    }
+
+    useEffect(async () => {
         console.log("Adicionando item ao carrinho");
         const userId = localStorage.getItem("userId");
         const productId = product._id;
 
-        if(!userId) {
+        if (!userId) {
             alert("Você não está logado!");
             return;
         }
@@ -62,14 +61,13 @@ export default function Product(props) {
             var response = await api.post(`/cart/${userId}`, {
                 productId: productId,
                 productQuantity: 1
-            } );
-
-            console.log(response);
-        } catch(err) {
+            });
+            setOrders(response.data.products);
+        } catch (err) {
             console.log("Erro ao adicionar item ao carrinho: ", err);
         }
-        // setOrders(response.data.products)
-    }
+    }, [addToCartButtonClicked]);
+    
 
     return (
         <div className="product">
@@ -124,7 +122,7 @@ export default function Product(props) {
 
                             <div id="add-to-cart-modal" className="modal fade user-cart-modal" tabindex="-1">
                                 <div className="modal-dialog modal-dialog-centered">
-                                    <CartModal />
+                                    <CartModal key={orders} orders={orders}/>
                                 </div>
                             </div>
 

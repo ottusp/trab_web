@@ -7,20 +7,23 @@ import './style.css';
 
 export default function CartModal(props) {
 
-    const [orders, setOrders] = useState([]);
+    console.log("No CartModal...");
 
-    // useEffect(async () => {
-    //     try {
-    //         const userId = localStorage.getItem('userId');
-    //         const response = await api.get(`/cart/${userId}`);
-    //         setOrders(response.data.products);
-    //     } catch (err) {
-    //         console.log('Erro ao dar get para o carrinho: ', err);
-    //     }
-    // }, []);
+    // const orders = props.orders ? props.orders : [];
+    const [orders, setOrders] = useState([])
+    console.log(orders);
+
+    useEffect(() => {
+        if(props.orders) {
+            console.log("Dentro do useEffect");
+            console.log(props.orders);
+            setOrders(props.orders);
+        }
+    }, [props.orders]);
 
     const totalPrice = () => {
         const sum = orders.reduce((acc, order) => {
+            console.log(order.product);
             const price = parseFloat(order.product.price);
             const subTotal = price * order.quantity;
             return acc + subTotal;
@@ -51,9 +54,16 @@ export default function CartModal(props) {
             </div>
 
             <div className="modal-body">
-                {orders.map(order => (
-                    <CartModalListItem key={order.product.name} order={order.product} />
-                ))}
+                {console.log("orders.length = ", orders.length)}
+                {<div>{orders.length != 0 ? "orders[0]" : "aaa"}</div>}
+                {
+                    orders.map((order) => (
+                        <div>
+                            {/* <CartModalListItem order={order} /> */}
+                            {/* <div> {"order.product.name"} </div> */}
+                        </div>
+                    ))
+                }
                 <div className="total-price-container">
                     <div className="total-price">
                         Total: R${totalPrice()}
