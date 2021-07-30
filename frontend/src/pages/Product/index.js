@@ -33,12 +33,12 @@ export default function Product(props) {
     
     useEffect(async () => {
         try {
-            var response = await api.get('/comment/', {params: {id:product._id}});
+            var response = await api.get(`/comment?id=${props.match.params.id}`);
             console.log('response: ', response.data);
 
             setComments(response.data);
         } catch (err) {
-            console.log('erro no get: ', err);
+            console.log('erro no get de comentário: ', err);
         }
     }, []);
 
@@ -54,7 +54,6 @@ export default function Product(props) {
         const productId = product._id;
 
         if (!userId) {
-            alert("Você não está logado!");
             return;
         }
         try {
@@ -66,7 +65,8 @@ export default function Product(props) {
         } catch (err) {
             console.log("Erro ao adicionar item ao carrinho: ", err);
         }
-    }, [addToCartButtonClicked]);
+    }, [addToCartButtonClicked]
+    );
     
 
     return (

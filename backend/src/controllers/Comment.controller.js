@@ -32,7 +32,7 @@ module.exports = {
                 .find({
                     product: req.query?.id,
                 }, 'user rating content')
-                .populate('user', 'name');
+                .populate('user name');
             } catch (err) {//error
                 if (err.kind == "ObjectId") {
                     return res.status(404).end();
